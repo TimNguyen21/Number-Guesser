@@ -17,6 +17,11 @@ h3{
   font-weight: 400;
 }
 
+span {
+  font-weight: 900;
+  text-decoration: underline;
+}
+
 .main-header {
   background-color: #404041;
   text-align: center;
@@ -85,7 +90,7 @@ header strong {
   margin-top: 35px;
 }
 
-.update-button {
+.update-button, .submit-guess-button, .reset-game-button, .clear-form-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,8 +108,30 @@ header strong {
   font-size: 17px;
   font-weight: 900;
 }
+
+.submit-guess-button, .reset-game-button, .clear-form-button {
+  width: 200px;
+  margin: 10px;
+}
+
+.challenger-1-name-input, .challenger-2-name-input {
+  margin-bottom: 20px;
+  height: 30px;
+  width: 400px;
+}
+
+.challenger-name {
+text-align: left;
+}
+
+.challenger-1-guess-input, .challenger-2-guess-input {
+  margin-bottom: 20px;
+  height: 30px;
+  width: 220px;
+}
+
 .teset {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
