@@ -34,7 +34,7 @@ header strong {
 .main-sub-header {
   text-transform: uppercase;
   color: white;
-  padding: 10px;
+  padding: 2px 0px 10px 0px;
   font-size: 16px;
   font-weight: 300;
 }
@@ -43,7 +43,7 @@ header strong {
   content:"\00a0";
   text-decoration:line-through;
   color: white;
-  word-spacing: 80px;
+  word-spacing: 82px;
 }
 
 .container {
@@ -68,7 +68,7 @@ header strong {
 .box1 {
   display: flex;
   justify-content: space-around;
-  height: 100px;
+  height: 130px;
   border: 1px solid #d0d2d3;
   background-color: white;
 /*   box-shadow: 1px 1px grey; */
@@ -76,20 +76,21 @@ header strong {
 
 .min-range-input, .max-range-input {
   margin: 0px 0px 0px 8px;
-  height: 20px;
+  height: 30px;
+  width: 150px;
 }
 
 .max-range-column {
-  margin-top: 32px;
+  margin-top: 35px;
 }
 
 .update-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 30px;
-  margin-top: 47px;
+  width: 118px;
+  height: 38px;
+  margin-top: 54px;
   border-radius: 20px;
   text-transform: uppercase;
   color: #ffffff;
@@ -98,5 +99,6 @@ header strong {
   margin-left: 20px;
   margin-right: 8px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 900;
 }
