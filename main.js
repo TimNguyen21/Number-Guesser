@@ -1,3 +1,4 @@
+var correctNumber = getRandomRange(1, 100);
 var oneName = document.querySelector('#one-name');
 var twoName = document.querySelector('#two-name');
 var oneGuess = document.querySelector('#one-guess');
@@ -9,6 +10,8 @@ var oneChallenger = document.querySelector('#one-challenger');
 var twoChallenger = document.querySelector('#two-challenger');
 var oneLatestGuess = document.querySelector('#one-latest-guess');
 var twoLatestGuess = document.querySelector('#two-latest-guess');
+var oneFeedback =document.querySelector('#one-guess-feedback');
+var twoFeedback =document.querySelector('#two-guess-feedback');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
@@ -18,6 +21,10 @@ document.addEventListener('keyup', enableSubmit);
 document.addEventListener('keyup', enableClear);
 clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
+
+function getRandomRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function enableSubmit() {
   var hasOneName = oneName.value !== "";
@@ -59,9 +66,24 @@ function updateLatestGuess() {
   twoChallenger.innerText = twoName.value;
   oneLatestGuess.innerText = oneGuess.value;
   twoLatestGuess.innerText = twoGuess.value;
+  checkGuess(oneGuess, oneFeedback);
+  checkGuess(twoGuess, twoFeedback);
   oneGuess.value = "";
   twoGuess.value = "";
   submitButton.disabled = true;
   clearButton.disabled = true;
   resetButton.disabled = true;
+}
+
+function checkGuess(guessInput, feedbackMessage) {
+  var currentGuess = parseInt(guessInput.value);
+  if (currentGuess === correctNumber) {
+    feedbackMessage.innerText = "BOOM!";
+  } else if (currentGuess > correctNumber) {
+    feedbackMessage.innerText = "that's too high";
+  } else if (currentGuess < correctNumber) {
+    feedbackMessage.innerText = "that's too low";
+  } else {
+    feedbackMessage.innerText = "something went wrong";
+  }
 }
