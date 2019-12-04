@@ -114,13 +114,13 @@ header strong {
   margin: 10px;
 }
 
-.challenger-1-name-input, .challenger-2-name-input {
+/* .challenger-1-name-input, .challenger-2-name-input {
   margin-bottom: 20px;
   height: 30px;
   width: 400px;
 }
 
-.challenger-name {
+.challenger-1-name {
 text-align: left;
 }
 
@@ -128,8 +128,21 @@ text-align: left;
   margin-bottom: 20px;
   height: 30px;
   width: 220px;
-}
+} */
 
+.challenger-input-info {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+.challenger-1-name-input, .challenger-2-name-input {
+  width: 200px;
+  margin: 10px;
+}
+.challenger-1-guess-input, .challenger-2-guess-input {
+  width: 150px;
+  margin: 10px;
+}
 .teset {
   display: flex;
   flex-direction: row;
