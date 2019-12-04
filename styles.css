@@ -83,6 +83,11 @@ header strong {
   background-color: white;
 }
 
+.box3 {
+  height: 240px;
+  border: 1px solid #d0d2d3;
+  background-color: white;
+}
 .min-range-input, .max-range-input {
   margin-left: 15px;
   height: 35px;
@@ -147,16 +152,17 @@ header strong {
   justify-content: space-around;
 }
 
-.what {
+.latest-guess-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+
 }
 .latest-guess-box{
   width: 500px;
   height: 250px;
   border: 2px solid;
 }
-.what1, .what2 {
+.challenger-1-latest-guess-label, .challenger-2-latest-guess-label {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,22 +170,24 @@ header strong {
   height: 250px;
 }
 
-.what1 {
-/*   border-right: 2px solid; */
+.challenger-1-latest-guess-label {
+  /* border-right: 2px solid; */
   display: absolute;
 }
-.bd {
-  Border: 2px solid;
+.latest-guess-mid-border {
+  Border: 1px solid #d0d2d3;
   height: 200px;
-  margin-top: -10px;
+  margin-top: -15px;
 }
 
 .current-guess-output {
-  Border: 2px solid;
+  /* Border: 2px solid; */
   height: 100px;
-  width: 100px;
+  width: 100%;
   text-align: center;
   font-size: 90px;
   margin: 0px;
   font-weight: 900;
+  color: #dd1972;
+  line-height: 90px;
 }
