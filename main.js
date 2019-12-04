@@ -4,6 +4,7 @@ var oneGuess = document.querySelector('#one-guess');
 var twoGuess = document.querySelector('#two-guess');
 var submitButton = document.querySelector('#submit-button');
 var clearButton = document.querySelector('#clear-button');
+var resetButton = document.querySelector('#reset-button');
 var oneChallenger = document.querySelector('#one-challenger');
 var twoChallenger = document.querySelector('#two-challenger');
 var oneLatestGuess = document.querySelector('#one-latest-guess');
@@ -11,6 +12,7 @@ var twoLatestGuess = document.querySelector('#two-latest-guess');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
+resetButton.disabled = true;
 
 document.addEventListener('keyup', enableSubmit);
 document.addEventListener('keyup', enableClear);
@@ -59,4 +61,7 @@ function updateLatestGuess() {
   twoLatestGuess.innerText = twoGuess.value;
   oneGuess.value = "";
   twoGuess.value = "";
+  submitButton.disabled = true;
+  clearButton.disabled = true;
+  resetButton.disabled = true;
 }
