@@ -38,12 +38,12 @@
         <section class="challenger-input-info">
   <section>
     <article><h3 class="challenger-intext-label">name</h3></article>
-    <article><input type="text" class="challenger-1-name-input"></input></article>
+    <article><input type="text" class="challenger-1-name-input" id="one-name"></input></article>
 
 </section>
   <section>
     <article><h3 class="challenger-intext-label">guess</h3></article>
-    <article><input type="text" class="challenger-1-guess-input"></input></article>
+    <article><input type="text" class="challenger-1-guess-input" id="one-guess"></input></article>
   </section>
 </section>
         <section>
@@ -52,18 +52,18 @@
         <section class="challenger-input-info">
   <section>
     <article><h3 class="challenger-intext-label">name</h3></article>
-    <article><input type="text" class="challenger-2-name-input"></input></article>
+    <article><input type="text" class="challenger-2-name-input" id="two-name"></input></article>
 
 </section>
   <section>
     <article><h3 class="challenger-intext-label">guess</h3></article>
-    <article><input type="text" class="challenger-2-guess-input"></input></article>
+    <article><input type="text" class="challenger-2-guess-input" id="two-guess"></input></article>
   </section>
 </section>
         <section class="teset">
-          <article><button type="button" class="submit-guess-button">submit guess</button></article>
-          <article><button type="button" class="reset-game-button">reset game</button></article>
-          <article><button type="button" class="clear-form-button">clear form</button></article>
+          <article><button type="button" class="submit-guess-button" id="submit-button">submit guess</button></article>
+          <article><button type="button" class="reset-game-button" id="reset-button">reset game</button></article>
+          <article><button type="button" class="clear-form-button" id="clear-button">clear form</button></article>
         </section>
       </article>
 
@@ -75,17 +75,17 @@
           <h2>Latest Guess</h2>
           <div class="what">
             <section class="what1">
-              <article>challenger 1 name</article>
+              <article id="one-challenger">challenger 1 name</article>
               <article>current guess</article>
-              <p class="current-guess-output">2</p>
-              <article>no gues</article>
+              <p class="current-guess-output" id="one-latest-guess">2</p>
+              <article id="one-guess-feedback">no gues</article>
             </section>
             <div class="bd"></div>
             <section class="what2">
-              <article>challenger 2 name</article>
+              <article id="two-challenger">challenger 2 name</article>
               <article>currentguess</article>
-              <p class="current-guess-output"> 91</p>
-              <article>no gues</article>
+              <p class="current-guess-output" id="two-latest-guess"> 91</p>
+              <article id="two-guess-feedback">no gues</article>
             </section>
           </div>
       </article>
@@ -98,4 +98,5 @@
       </section>
     </main>
   </body>
+  <script src="main.js"></script>
 </html>
