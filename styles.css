@@ -146,3 +146,40 @@ header strong {
   flex-direction: row;
   justify-content: space-around;
 }
+
+.what {
+  display: flex;
+  justify-content: space-between;
+}
+.latest-guess-box{
+  width: 500px;
+  height: 250px;
+  border: 2px solid;
+}
+.what1, .what2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+}
+
+.what1 {
+/*   border-right: 2px solid; */
+  display: absolute;
+}
+.bd {
+  Border: 2px solid;
+  height: 200px;
+  margin-top: -10px;
+}
+
+.current-guess-output {
+  Border: 2px solid;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  font-size: 90px;
+  margin: 0px;
+  font-weight: 900;
+}
