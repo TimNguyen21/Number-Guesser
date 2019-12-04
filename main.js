@@ -10,6 +10,7 @@ clearButton.disabled = true;
 
 document.addEventListener('keyup', enableSubmit);
 document.addEventListener('keyup', enableClear);
+clearButton.addEventListener('click', clearInputs);
 
 function enableSubmit() {
   var hasOneName = oneName.value !== "";
@@ -35,4 +36,13 @@ function enableClear() {
   } else {
     clearButton.disabled = true;
   }
+}
+
+function clearInputs() {
+  oneName.value = "";
+  twoName.value = "";
+  oneGuess.value = "";
+  twoGuess.value = "";
+  submitButton.disabled = true;
+  clearButton.disabled = true;
 }
