@@ -7,14 +7,19 @@ main {
 }
 
 h2 {
-  margin: 8px 0px 3px 8px;
+  margin: 8px 0px 3px 15px;
   font-size: 18px;
 }
 
 h3{
-  margin: 3px 0px 0px 8px;
+  margin: 3px 0px 0px 15px;
   font-size: 16px;
   font-weight: 400;
+}
+
+span {
+  font-weight: 900;
+  text-decoration: underline;
 }
 
 .main-header {
@@ -24,7 +29,7 @@ h3{
   color: #dd1972;
   padding:10px;
   font-size: 50px;
-  width: 1022px;
+  width: 1404px;
 }
 
 header strong {
@@ -48,43 +53,47 @@ header strong {
 
 .container {
   display: inline-block;
-  width: 520px;
-  height: 635px;
+  width: 780px;
+  min-height: 635px;
   background-color: #f7f7f7;
 }
 
 .container2 {
   border-left: 2px solid grey;
-  width: 520px;
-  height: 635px;
+  width: 780px;
+  min-height: 635px;
   background-color: #d0d2d3;
 }
 
 .box1, .box2, .box3{
   border: 2px solid black;
-  margin: 10px;
+  margin: 15px;
 }
 
 .box1 {
   display: flex;
-  justify-content: space-around;
-  height: 130px;
+  justify-content: space-between;
+  height: 140px;
   border: 1px solid #d0d2d3;
   background-color: white;
-/*   box-shadow: 1px 1px grey; */
+}
+.box2 {
+  height: 335px;
+  border: 1px solid #d0d2d3;
+  background-color: white;
 }
 
 .min-range-input, .max-range-input {
-  margin: 0px 0px 0px 8px;
-  height: 30px;
-  width: 150px;
+  margin-left: 15px;
+  height: 35px;
+  width: 230px;
 }
 
 .max-range-column {
   margin-top: 35px;
 }
 
-.update-button {
+.update-button, .submit-guess-button, .reset-game-button, .clear-form-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,6 +108,41 @@ header strong {
   margin-left: 20px;
   margin-right: 8px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 900;
+}
+
+.submit-guess-button, .reset-game-button, .clear-form-button {
+  width: 190px;
+  margin: 10px;
+}
+
+.challenger-input-info {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.challenger-intext-label {
+  margin-left: 15px;
+  text-transform: capitalize;
+}
+.current-range-header{
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.challenger-1-name-input, .challenger-2-name-input {
+  width: 410px;
+  height: 30px;
+  margin: 0px 0px 20px 15px;
+}
+.challenger-1-guess-input, .challenger-2-guess-input {
+  width: 210px;
+  height: 30px;
+  margin: 0px 0px 20px 15px;
+}
+.teset {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
