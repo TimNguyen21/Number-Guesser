@@ -73,16 +73,19 @@ header strong {
 .box1 {
   display: flex;
   justify-content: space-between;
-  height: 130px;
+  height: 140px;
   border: 1px solid #d0d2d3;
   background-color: white;
-  /* padding: 0px 10px 0px 10px; */
-/*   box-shadow: 1px 1px grey; */
+}
+.box2 {
+  height: 335px;
+  border: 1px solid #d0d2d3;
+  background-color: white;
 }
 
 .min-range-input, .max-range-input {
   margin-left: 15px;
-  height: 30px;
+  height: 35px;
   width: 230px;
 }
 
@@ -110,7 +113,7 @@ header strong {
 }
 
 .submit-guess-button, .reset-game-button, .clear-form-button {
-  width: 200px;
+  width: 190px;
   margin: 10px;
 }
 
@@ -129,13 +132,13 @@ header strong {
   margin-bottom: 15px;
 }
 .challenger-1-name-input, .challenger-2-name-input {
-  width: 400px;
-  height: 25px;
+  width: 410px;
+  height: 30px;
   margin: 0px 0px 20px 15px;
 }
 .challenger-1-guess-input, .challenger-2-guess-input {
-  width: 200px;
-  height: 25px;
+  width: 210px;
+  height: 30px;
   margin: 0px 0px 20px 15px;
 }
 .teset {
