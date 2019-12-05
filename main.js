@@ -12,6 +12,11 @@ var oneLatestGuess = document.querySelector('#one-latest-guess');
 var twoLatestGuess = document.querySelector('#two-latest-guess');
 var oneFeedback =document.querySelector('#one-guess-feedback');
 var twoFeedback =document.querySelector('#two-guess-feedback');
+var minRange = document.querySelector('#min-range');
+var maxRange = document.querySelector('#max-range');
+var minSpan = document.querySelector('#min-span');
+var maxSpan = document.querySelector('#max-span');
+var updateButton = document.querySelector('#update-button');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
@@ -21,6 +26,7 @@ document.addEventListener('keyup', enableSubmit);
 document.addEventListener('keyup', enableClear);
 clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
+updateButton.addEventListener('click', updateRange);
 
 function getRandomRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -86,4 +92,12 @@ function checkGuess(guessInput, feedbackMessage) {
   } else {
     feedbackMessage.innerText = "something went wrong";
   }
+}
+
+function updateRange() {
+  minSpan.innerText = minRange.value;
+  maxSpan.innerText = maxRange.value;
+  var min = parseInt(minRange.value);
+  var max = parseInt(maxRange.value);
+  correctNumber = getRandomRange(min, max);
 }
