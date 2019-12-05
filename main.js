@@ -97,4 +97,7 @@ function checkGuess(guessInput, feedbackMessage) {
 function updateRange() {
   minSpan.innerText = minRange.value;
   maxSpan.innerText = maxRange.value;
+  var min = parseInt(minRange.value);
+  var max = parseInt(maxRange.value);
+  correctNumber = getRandomRange(min, max);
 }
