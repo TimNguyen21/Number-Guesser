@@ -11,7 +11,7 @@ h2 {
   font-size: 18px;
 }
 
-h3{
+h3 {
   margin: 3px 0px 0px 15px;
   font-size: 16px;
   font-weight: 400;
@@ -53,14 +53,14 @@ header strong {
 
 .container {
   display: inline-block;
-  width: 780px;
+  width: 711px;
   min-height: 635px;
   background-color: #f7f7f7;
 }
 
 .container2 {
   border-left: 2px solid grey;
-  width: 780px;
+  width: 711px;
   min-height: 635px;
   background-color: #d0d2d3;
 }
@@ -88,6 +88,7 @@ header strong {
   border: 1px solid #d0d2d3;
   background-color: white;
 }
+
 .min-range-input, .max-range-input {
   margin-left: 15px;
   height: 35px;
@@ -132,21 +133,25 @@ header strong {
   margin-left: 15px;
   text-transform: capitalize;
 }
-.current-range-header{
+
+.current-range-header {
   font-weight: 400;
   margin-bottom: 15px;
 }
+
 .challenger-1-name-input, .challenger-2-name-input {
   width: 410px;
   height: 30px;
   margin: 0px 0px 20px 15px;
 }
+
 .challenger-1-guess-input, .challenger-2-guess-input {
   width: 210px;
   height: 30px;
   margin: 0px 0px 20px 15px;
 }
-.teset {
+
+.current-range-section-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -162,6 +167,7 @@ header strong {
   height: 250px;
   border: 2px solid;
 }
+
 .challenger-1-latest-guess-label, .challenger-2-latest-guess-label {
   display: flex;
   flex-direction: column;
@@ -174,6 +180,7 @@ header strong {
   /* border-right: 2px solid; */
   display: absolute;
 }
+
 .latest-guess-mid-border {
   Border: 1px solid #d0d2d3;
   height: 200px;
