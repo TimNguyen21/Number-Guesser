@@ -17,6 +17,7 @@ var maxRange = document.querySelector('#max-range');
 var minSpan = document.querySelector('#min-span');
 var maxSpan = document.querySelector('#max-span');
 var updateButton = document.querySelector('#update-button');
+var errorIcon = document.querySelector('#error');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
@@ -40,6 +41,7 @@ function enableSubmit() {
   var isFilled = hasOneName && hasTwoName && hasOneGuess && hasTwoGuess;
   if (isFilled) {
     submitButton.disabled = false;
+    document.getElementByID("#submit-button").background = white;
   } else {
     submitButton.disabled = true;
   }
@@ -100,4 +102,9 @@ function updateRange() {
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
   correctNumber = getRandomRange(min, max);
+  if (min >= max) {
+    errorIcon.style.visibility = 'visible';
+  } else {
+    errorIcon.style.visibility = 'hidden';
+  }
 }
