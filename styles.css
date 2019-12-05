@@ -1,5 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  color: #6e6e6e;
 }
 
 main {
@@ -11,7 +12,7 @@ h2 {
   font-size: 18px;
 }
 
-h3{
+h3 {
   margin: 3px 0px 0px 15px;
   font-size: 16px;
   font-weight: 400;
@@ -33,7 +34,7 @@ span {
 }
 
 header strong {
-  font-weight: 1000;
+  font-weight: 900;
 }
 
 .main-sub-header {
@@ -53,14 +54,14 @@ header strong {
 
 .container {
   display: inline-block;
-  width: 780px;
+  width: 711px;
   min-height: 635px;
   background-color: #f7f7f7;
 }
 
 .container2 {
-  border-left: 2px solid grey;
-  width: 780px;
+  border-left: 1px solid #6e6e6e;
+  width: 711px;
   min-height: 635px;
   background-color: #d0d2d3;
 }
@@ -88,6 +89,7 @@ header strong {
   border: 1px solid #d0d2d3;
   background-color: white;
 }
+
 .min-range-input, .max-range-input {
   margin-left: 15px;
   height: 35px;
@@ -132,21 +134,25 @@ header strong {
   margin-left: 15px;
   text-transform: capitalize;
 }
-.current-range-header{
+
+.current-range-header {
   font-weight: 400;
   margin-bottom: 15px;
 }
+
 .challenger-1-name-input, .challenger-2-name-input {
   width: 410px;
   height: 30px;
   margin: 0px 0px 20px 15px;
 }
+
 .challenger-1-guess-input, .challenger-2-guess-input {
   width: 210px;
   height: 30px;
   margin: 0px 0px 20px 15px;
 }
-.teset {
+
+.current-range-section-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -162,6 +168,7 @@ header strong {
   height: 250px;
   border: 2px solid;
 }
+
 .challenger-1-latest-guess-label, .challenger-2-latest-guess-label {
   display: flex;
   flex-direction: column;
@@ -174,6 +181,12 @@ header strong {
   /* border-right: 2px solid; */
   display: absolute;
 }
+
+#one-guess-feedback, #two-guess-feedback {
+  text-transform: capitalize;
+  font-size: 20px;
+}
+
 .latest-guess-mid-border {
   Border: 1px solid #d0d2d3;
   height: 200px;
@@ -190,4 +203,53 @@ header strong {
   font-weight: 900;
   color: #dd1972;
   line-height: 90px;
+}
+
+.winner-output {
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  padding: 15px;
+  margin: 15px 25px 15px 25px;
+  border: 1px solid #6e6e6e;
+  align-content: center;
+  background-color: white;
+}
+
+.winner-info-header{
+  display: flex;
+  justify-content: space-around;
+  margin: 0px 55px;
+}
+
+.winner-info-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid #d0d2d3;
+  border-bottom: 1px solid #d0d2d3;
+  padding: 18px;
+  margin: 8px;
+}
+
+.winner-ouput-label {
+  font-size: 19px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.winner-info-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.winner-tag {
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.winner-name {
+  font-size: 30px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
