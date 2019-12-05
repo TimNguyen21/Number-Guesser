@@ -123,7 +123,9 @@ function checkRange() {
   }
   if (min < max) {
     updateButton.disabled = false;
+    updateButton.style.backgroundColor = '#6e6e6e';
   } else {
     updateButton.disabled = true;
+    updateButton.style.backgroundColor = '#d0d2d3';
   }
 }
