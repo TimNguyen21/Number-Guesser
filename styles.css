@@ -198,3 +198,31 @@ header strong {
   color: #dd1972;
   line-height: 90px;
 }
+
+
+.winner-output {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  border: 2px solid;
+  align-content: center;
+}
+
+.winner-info-header{
+  display: flex;
+  justify-content: space-around;
+}
+.winner-info-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  padding: 10px;
+  margin: 10px;
+}
+.winner-info-footer {
+  display: flex;
+  justify-content: space-around;
+}
