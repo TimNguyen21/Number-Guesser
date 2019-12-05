@@ -1,5 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  color: #6e6e6e;
 }
 
 main {
@@ -59,7 +60,7 @@ header strong {
 }
 
 .container2 {
-  border-left: 2px solid grey;
+  border-left: 1px solid #6e6e6e;
   width: 711px;
   min-height: 635px;
   background-color: #d0d2d3;
@@ -181,6 +182,11 @@ header strong {
   display: absolute;
 }
 
+#one-guess-feedback, #two-guess-feedback {
+  text-transform: capitalize;
+  font-size: 20px;
+}
+
 .latest-guess-mid-border {
   Border: 1px solid #d0d2d3;
   height: 200px;
@@ -205,7 +211,7 @@ header strong {
   height: 180px;
   padding: 15px;
   margin: 15px 25px 15px 25px;
-  border: 2px solid grey;
+  border: 1px solid #6e6e6e;
   align-content: center;
   background-color: white;
 }
