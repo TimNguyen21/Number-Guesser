@@ -33,7 +33,7 @@ span {
 }
 
 header strong {
-  font-weight: 1000;
+  font-weight: 900;
 }
 
 .main-sub-header {
@@ -199,30 +199,51 @@ header strong {
   line-height: 90px;
 }
 
-
 .winner-output {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  height: 180px;
   padding: 15px;
-  border: 2px solid;
+  margin: 15px 25px 15px 25px;
+  border: 2px solid grey;
   align-content: center;
+  background-color: white;
 }
 
 .winner-info-header{
   display: flex;
   justify-content: space-around;
+  margin: 0px 55px;
 }
+
 .winner-info-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 2px solid;
-  border-bottom: 2px solid;
-  padding: 10px;
-  margin: 10px;
+  border-top: 1px solid #d0d2d3;
+  border-bottom: 1px solid #d0d2d3;
+  padding: 18px;
+  margin: 8px;
 }
+
+.winner-ouput-label {
+  font-size: 19px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .winner-info-footer {
   display: flex;
   justify-content: space-around;
+}
+
+.winner-tag {
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.winner-name {
+  font-size: 30px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
