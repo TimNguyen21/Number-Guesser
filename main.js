@@ -104,7 +104,9 @@ function updateRange() {
   correctNumber = getRandomRange(min, max);
   if (min >= max) {
     errorIcon.style.visibility = 'visible';
+    maxRange.style.borderColor = '#dd1972'
   } else {
     errorIcon.style.visibility = 'hidden';
+    maxRange.style.border = '1px solid #d0d2d3';
   }
 }
