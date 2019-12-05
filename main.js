@@ -29,13 +29,14 @@ updateButton.disabled = true;
 
 document.addEventListener('keyup', enableSubmit);
 document.addEventListener('keyup', enableClear);
+document.addEventListener('keyup', checkRange);
 clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
 updateButton.addEventListener('click', updateRange);
-document.addEventListener('keyup', checkRange);
-closeWinnerOutputButton.addEventListener('click', removeWinnerOutpt);
+// resetButton.addEventListener('click', resetForm);
+closeWinnerOutputButton.addEventListener('click', removeWinnerOutput);
 
-function removeWinnerOutpt() {
+function removeWinnerOutput() {
   winnerOutput.remove();
 }
 
