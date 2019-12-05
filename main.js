@@ -19,6 +19,8 @@ var maxSpan = document.querySelector('#max-span');
 var updateButton = document.querySelector('#update-button');
 var errorIcon = document.querySelector('#error');
 var winnerName = document.querySelector('#winner-name');
+var closeWinnerOutputButton = document.querySelector('#close-winner-output');
+var winnerOutput = document.querySelector('.winner-output');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
@@ -31,7 +33,11 @@ clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
 updateButton.addEventListener('click', updateRange);
 document.addEventListener('keyup', checkRange);
+closeWinnerOutputButton.addEventListener('click', removeWinnerOutpt);
 
+function removeWinnerOutpt() {
+  winnerOutput.remove();
+}
 
 function getRandomRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -109,6 +115,9 @@ function updateRange() {
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
   correctNumber = getRandomRange(min, max);
+  minRange.value = "";
+  maxRange.value = "";
+  updateButton.disabled = true;
 }
 
 function checkRange() {
