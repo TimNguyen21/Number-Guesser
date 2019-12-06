@@ -21,6 +21,7 @@ var errorIcon = document.querySelector('#error');
 var winnerName = document.querySelector('#winner-name');
 var closeWinnerOutputButton = document.querySelector('#close-winner-output');
 var winnerOutput = document.querySelector('.winner-output');
+var winnerOutputSection = document.querySelector('.container2');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
@@ -33,11 +34,21 @@ document.addEventListener('keyup', checkRange);
 clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
 updateButton.addEventListener('click', updateRange);
-// resetButton.addEventListener('click', resetForm);
+resetButton.addEventListener('click', resetForm);
 closeWinnerOutputButton.addEventListener('click', removeWinnerOutput);
 
 function removeWinnerOutput() {
   winnerOutput.remove();
+}
+
+function resetForm() {
+  minSpan.innerText = "?";
+  maxSpan.innerText = "?";
+  oneName.value = "";
+  twoName.value = "";
+  minRange.value = "";
+  maxRange.value = "";
+
 }
 
 function getRandomRange(min, max) {
@@ -52,7 +63,6 @@ function enableSubmit() {
   var isFilled = hasOneName && hasTwoName && hasOneGuess && hasTwoGuess;
   if (isFilled) {
     submitButton.disabled = false;
-    // document.querySelector('#submit-button').style.background = white;
   } else {
     submitButton.disabled = true;
   }
@@ -94,22 +104,6 @@ function updateLatestGuess() {
   resetButton.disabled = true;
 }
 
-function checkGuess(guessInput, feedbackMessage) {
-  var currentGuess = parseInt(guessInput.value);
-  var tooHigh = "that's too high";
-  var tooLow = "that's too low";
-  var perfectGuess = "BOOM!";
-  if (currentGuess === correctNumber) {
-    feedbackMessage.innerText = perfectGuess;
-  } else if (currentGuess > correctNumber) {
-    feedbackMessage.innerText = tooHigh;
-  } else if (currentGuess < correctNumber) {
-    feedbackMessage.innerText = tooLow;
-  } else {
-    feedbackMessage.innerText = "something went wrong";
-  }
-}
-
 function updateRange() {
   minSpan.innerText = minRange.value;
   maxSpan.innerText = maxRange.value;
@@ -119,6 +113,23 @@ function updateRange() {
   minRange.value = "";
   maxRange.value = "";
   updateButton.disabled = true;
+}
+
+function checkGuess(guessInput, feedbackMessage) {
+  var currentGuess = parseInt(guessInput.value);
+  var tooHigh = "that's too high";
+  var tooLow = "that's too low";
+  var perfectGuess = "BOOM!";
+
+  if (currentGuess === correctNumber) {
+    feedbackMessage.innerText = perfectGuess;
+  } else if (currentGuess > correctNumber) {
+    feedbackMessage.innerText = tooHigh;
+  } else if (currentGuess < correctNumber) {
+    feedbackMessage.innerText = tooLow;
+  } else {
+    feedbackMessage.innerText = "something went wrong";
+  }
 }
 
 function checkRange() {
