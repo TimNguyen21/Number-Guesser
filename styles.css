@@ -124,6 +124,7 @@ header strong {
   margin: 10px;
 }
 
+
 .challenger-input-info {
   display: flex;
   justify-content: space-between;
@@ -252,4 +253,8 @@ header strong {
   font-size: 30px;
   font-weight: 900;
   text-transform: uppercase;
+}
+#error {
+  visibility: hidden;
+  color: #dd1972;
 }

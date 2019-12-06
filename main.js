@@ -17,16 +17,39 @@ var maxRange = document.querySelector('#max-range');
 var minSpan = document.querySelector('#min-span');
 var maxSpan = document.querySelector('#max-span');
 var updateButton = document.querySelector('#update-button');
+var errorIcon = document.querySelector('#error');
+var winnerName = document.querySelector('#winner-name');
+var closeWinnerOutputButton = document.querySelector('#close-winner-output');
+var winnerOutput = document.querySelector('.winner-output');
+var winnerOutputSection = document.querySelector('.container2');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
 resetButton.disabled = true;
+updateButton.disabled = true;
 
 document.addEventListener('keyup', enableSubmit);
 document.addEventListener('keyup', enableClear);
+document.addEventListener('keyup', checkRange);
 clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
 updateButton.addEventListener('click', updateRange);
+resetButton.addEventListener('click', resetForm);
+closeWinnerOutputButton.addEventListener('click', removeWinnerOutput);
+
+function removeWinnerOutput() {
+  winnerOutput.remove();
+}
+
+function resetForm() {
+  minSpan.innerText = "?";
+  maxSpan.innerText = "?";
+  oneName.value = "";
+  twoName.value = "";
+  minRange.value = "";
+  maxRange.value = "";
+
+}
 
 function getRandomRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -81,23 +104,49 @@ function updateLatestGuess() {
   resetButton.disabled = true;
 }
 
-function checkGuess(guessInput, feedbackMessage) {
-  var currentGuess = parseInt(guessInput.value);
-  if (currentGuess === correctNumber) {
-    feedbackMessage.innerText = "BOOM!";
-  } else if (currentGuess > correctNumber) {
-    feedbackMessage.innerText = "that's too high";
-  } else if (currentGuess < correctNumber) {
-    feedbackMessage.innerText = "that's too low";
-  } else {
-    feedbackMessage.innerText = "something went wrong";
-  }
-}
-
 function updateRange() {
   minSpan.innerText = minRange.value;
   maxSpan.innerText = maxRange.value;
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
   correctNumber = getRandomRange(min, max);
+  minRange.value = "";
+  maxRange.value = "";
+  updateButton.disabled = true;
+}
+
+function checkGuess(guessInput, feedbackMessage) {
+  var currentGuess = parseInt(guessInput.value);
+  var tooHigh = "that's too high";
+  var tooLow = "that's too low";
+  var perfectGuess = "BOOM!";
+
+  if (currentGuess === correctNumber) {
+    feedbackMessage.innerText = perfectGuess;
+  } else if (currentGuess > correctNumber) {
+    feedbackMessage.innerText = tooHigh;
+  } else if (currentGuess < correctNumber) {
+    feedbackMessage.innerText = tooLow;
+  } else {
+    feedbackMessage.innerText = "something went wrong";
+  }
+}
+
+function checkRange() {
+  var min = parseInt(minRange.value);
+  var max = parseInt(maxRange.value);
+  if (min >= max) {
+    errorIcon.style.visibility = 'visible';
+    maxRange.style.borderColor = '#dd1972';
+  } else {
+    errorIcon.style.visibility = 'hidden';
+    maxRange.style.border = '1px solid #d0d2d3';
+  }
+  if (min < max) {
+    updateButton.disabled = false;
+    updateButton.style.backgroundColor = '#6e6e6e';
+  } else {
+    updateButton.disabled = true;
+    updateButton.style.backgroundColor = '#d0d2d3';
+  }
 }
