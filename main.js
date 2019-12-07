@@ -19,8 +19,6 @@ var maxSpan = document.querySelector('#max-span');
 var updateButton = document.querySelector('#update-button');
 var errorIcon = document.querySelector('#error');
 var winnerName = document.querySelector('#winner-name');
-var closeButton = document.querySelector('#close');
-var winnerBox = document.querySelector('.winner-output');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
@@ -33,8 +31,6 @@ clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
 updateButton.addEventListener('click', updateRange);
 document.addEventListener('keyup', checkRange);
-closeButton.addEventListener('click', closeWinnerOutput);
-
 
 function getRandomRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -48,7 +44,6 @@ function enableSubmit() {
   var isFilled = hasOneName && hasTwoName && hasOneGuess && hasTwoGuess;
   if (isFilled) {
     submitButton.disabled = false;
-    // document.querySelector('#submit-button').style.background = white;
   } else {
     submitButton.disabled = true;
   }
@@ -67,6 +62,7 @@ function enableClear() {
   }
 }
 
+// New function is found at end of JS Document, discription is provided at th end //
 // function clearInputs() {
 //   oneName.value = "";
 //   twoName.value = "";
@@ -92,15 +88,15 @@ function updateLatestGuess() {
 
 function checkGuess(guessInput, feedbackMessage) {
   var currentGuess = parseInt(guessInput.value);
-  var tooHigh = "that's too high";
-  var tooLow = "that's too low";
-  var perfectGuess = "BOOM!";
   if (currentGuess === correctNumber) {
-    feedbackMessage.innerText = perfectGuess;
+    feedbackMessage.innerText = "BOOM!";
+    // Function for updating Winner's Summary
+    updateWinner();
+    //
   } else if (currentGuess > correctNumber) {
-    feedbackMessage.innerText = tooHigh;
+    feedbackMessage.innerText = "that's too high";
   } else if (currentGuess < correctNumber) {
-    feedbackMessage.innerText = tooLow;
+    feedbackMessage.innerText = "that's too low"
   } else {
     feedbackMessage.innerText = "something went wrong";
   }
@@ -117,6 +113,7 @@ function updateRange() {
 function checkRange() {
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
+// remove the style when ccs enable/disable property is implemented //
   if (min >= max) {
     errorIcon.style.visibility = 'visible';
     maxRange.style.borderColor = '#dd1972';
@@ -131,22 +128,34 @@ function checkRange() {
   }
 }
 
-// new code
+// new code below //
 var closeButton = document.querySelector('#close');
 var winnerBox = document.querySelector('.winner-output');
-var playerInput = document.querySelectorAll('.player-input');
+// .player-inputbox line 42-59 html //
+var playerInputBox = document.querySelectorAll('.player-input-box');
+// new ID for Challenger 1 name for Winner Summary line 97 html//
+var outcomeNameOne = document.querySelector('#outcome-name-one');
+// new ID for Challenger 1 name for Winner Summary line 99 html//
+var outcomeNameTwo = document.querySelector('#outcome-name-two');
 
+// This function will update information on Winner's Summary //
+function updateWinner() {
+  outcomeNameOne.innerText = oneName.value;
+  outcomeNameTwo.innerText = twoName.value;
+}
+
+// Close Winner Summary //
 closeButton.addEventListener('click', closeWinnerOutput);
 
 function closeWinnerOutput() {
   winnerBox.remove();
 }
 
-// shorter function for clear feature, will comment out intial clear function
-// added class name of playerInput to input textboxes
+// shorter function for clear feature, will comment out intial clear function //
+// added class name of playerInput to input textboxes 42 - 59 line in html//
 function clearInputs() {
-  for (i = 0; i < playerInput.length; i++) {
-    playerInput[i].value = "";
+  for (i = 0; i < playerInputBox.length; i++) {
+    playerInputBox[i].value = "";
   }
   submitButton.disabled = true;
   clearButton.disabled = true;
