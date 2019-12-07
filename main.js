@@ -19,6 +19,8 @@ var maxSpan = document.querySelector('#max-span');
 var updateButton = document.querySelector('#update-button');
 var errorIcon = document.querySelector('#error');
 var winnerName = document.querySelector('#winner-name');
+var closeButton = document.querySelector('#close');
+var winnerBox = document.querySelector('.winner-output');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
@@ -31,6 +33,7 @@ clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
 updateButton.addEventListener('click', updateRange);
 document.addEventListener('keyup', checkRange);
+closeButton.addEventListener('click', closeWinnerOutput);
 
 
 function getRandomRange(min, max) {
@@ -64,14 +67,14 @@ function enableClear() {
   }
 }
 
-function clearInputs() {
-  oneName.value = "";
-  twoName.value = "";
-  oneGuess.value = "";
-  twoGuess.value = "";
-  submitButton.disabled = true;
-  clearButton.disabled = true;
-}
+// function clearInputs() {
+//   oneName.value = "";
+//   twoName.value = "";
+//   oneGuess.value = "";
+//   twoGuess.value = "";
+//   submitButton.disabled = true;
+//   clearButton.disabled = true;
+// }
 
 function updateLatestGuess() {
   oneChallenger.innerText = oneName.value;
@@ -126,4 +129,25 @@ function checkRange() {
   } else {
     updateButton.disabled = true;
   }
+}
+
+// new code
+var closeButton = document.querySelector('#close');
+var winnerBox = document.querySelector('.winner-output');
+var playerInput = document.querySelectorAll('.player-input');
+
+closeButton.addEventListener('click', closeWinnerOutput);
+
+function closeWinnerOutput() {
+  winnerBox.remove();
+}
+
+// shorter function for clear feature, will comment out intial clear function
+// added class name of playerInput to input textboxes
+function clearInputs() {
+  for (i = 0; i < playerInput.length; i++) {
+    playerInput[i].value = "";
+  }
+  submitButton.disabled = true;
+  clearButton.disabled = true;
 }
