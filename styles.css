@@ -254,7 +254,8 @@ header strong {
   font-weight: 900;
   text-transform: uppercase;
 }
-#error {
+
+#range-error {
   visibility: hidden;
   color: #dd1972;
 }
