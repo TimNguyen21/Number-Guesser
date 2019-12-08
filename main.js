@@ -17,11 +17,8 @@ var maxRange = document.querySelector('#max-range');
 var minSpan = document.querySelector('#min-span');
 var maxSpan = document.querySelector('#max-span');
 var updateButton = document.querySelector('#update-button');
-var errorIcon = document.querySelector('#error');
+var errorIcon = document.querySelector('#range-error'); // rename ID from error to range-error in HTNL, CSS, JS
 var winnerName = document.querySelector('#winner-name');
-var closeWinnerOutputButton = document.querySelector('#close-winner-output');
-var winnerOutput = document.querySelector('.winner-output');
-var winnerOutputSection = document.querySelector('.container2');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
@@ -30,26 +27,10 @@ updateButton.disabled = true;
 
 document.addEventListener('keyup', enableSubmit);
 document.addEventListener('keyup', enableClear);
-document.addEventListener('keyup', checkRange);
 clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
 updateButton.addEventListener('click', updateRange);
-resetButton.addEventListener('click', resetForm);
-closeWinnerOutputButton.addEventListener('click', removeWinnerOutput);
-
-function removeWinnerOutput() {
-  winnerOutput.remove();
-}
-
-function resetForm() {
-  minSpan.innerText = "?";
-  maxSpan.innerText = "?";
-  oneName.value = "";
-  twoName.value = "";
-  minRange.value = "";
-  maxRange.value = "";
-
-}
+document.addEventListener('keyup', checkRange);
 
 function getRandomRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -81,14 +62,15 @@ function enableClear() {
   }
 }
 
-function clearInputs() {
-  oneName.value = "";
-  twoName.value = "";
-  oneGuess.value = "";
-  twoGuess.value = "";
-  submitButton.disabled = true;
-  clearButton.disabled = true;
-}
+// New function is found at end of JS Document, discription is provided at th end //
+// function clearInputs() {
+//   oneName.value = "";
+//   twoName.value = "";
+//   oneGuess.value = "";
+//   twoGuess.value = "";
+//   submitButton.disabled = true;
+//   clearButton.disabled = true;
+// }
 
 function updateLatestGuess() {
   oneChallenger.innerText = oneName.value;
@@ -102,6 +84,24 @@ function updateLatestGuess() {
   submitButton.disabled = true;
   clearButton.disabled = true;
   resetButton.disabled = true;
+  // gameCount determine how many guess are taken until someone guess correctly
+  gameCount.push("+");
+}
+
+function checkGuess(guessInput, feedbackMessage) {
+  var currentGuess = parseInt(guessInput.value);
+  if (currentGuess === correctNumber) {
+    feedbackMessage.innerText = "BOOM!";
+    // Function for updating Winner's Summary
+    updateWinner();
+    //
+  } else if (currentGuess > correctNumber) {
+    feedbackMessage.innerText = "that's too high";
+  } else if (currentGuess < correctNumber) {
+    feedbackMessage.innerText = "that's too low"
+  } else {
+    feedbackMessage.innerText = "something went wrong";
+  }
 }
 
 function updateRange() {
@@ -110,31 +110,14 @@ function updateRange() {
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
   correctNumber = getRandomRange(min, max);
-  minRange.value = "";
-  maxRange.value = "";
-  updateButton.disabled = true;
-}
-
-function checkGuess(guessInput, feedbackMessage) {
-  var currentGuess = parseInt(guessInput.value);
-  var tooHigh = "that's too high";
-  var tooLow = "that's too low";
-  var perfectGuess = "BOOM!";
-
-  if (currentGuess === correctNumber) {
-    feedbackMessage.innerText = perfectGuess;
-  } else if (currentGuess > correctNumber) {
-    feedbackMessage.innerText = tooHigh;
-  } else if (currentGuess < correctNumber) {
-    feedbackMessage.innerText = tooLow;
-  } else {
-    feedbackMessage.innerText = "something went wrong";
-  }
+  minRange.value = ""; // clear value in min range box after valid update
+  maxRange.value = ""; // clear value in max range box after valid update
 }
 
 function checkRange() {
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
+// remove the style when ccs enable/disable property is implemented //
   if (min >= max) {
     errorIcon.style.visibility = 'visible';
     maxRange.style.borderColor = '#dd1972';
@@ -144,9 +127,46 @@ function checkRange() {
   }
   if (min < max) {
     updateButton.disabled = false;
-    updateButton.style.backgroundColor = '#6e6e6e';
   } else {
     updateButton.disabled = true;
-    updateButton.style.backgroundColor = '#d0d2d3';
   }
+}
+
+//
+// new code below //
+var closeButton = document.querySelector('#close-winner-output');
+var winnerBox = document.querySelector('.winner-output'); // .player-inputbox line 122-127 html
+var playerInputBox = document.querySelectorAll('.player-input-box'); // new ID for Challenger 1 name for Winner Summary line 124 html
+var outcomeNameOne = document.querySelector('#outcome-name-one'); // new ID for Challenger 2 name for Winner Summary line 126 html
+var outcomeNameTwo = document.querySelector('#outcome-name-two');
+var gameCount = ["+"]; // each entry in the array is one game count
+var summaryGuesses = document.querySelector('.summary-guesses'); // added new class "summary-guesses" to the line pf guesses in Winner Summary, line 133 html
+
+var con2 = document.querySelector('.container2');
+
+// This function will update information on Winner's Summary //
+function updateWinner() {
+  outcomeNameOne.innerText = oneName.value;
+  outcomeNameTwo.innerText = twoName.value;
+  var d1 = winnerBox;
+  summaryGuesses.innerText = gameCount.length; // this enter number of guesses into Winner Summary
+  gameCount.length = 0; // the array reset to default when a game is complete
+  // d1.insertAdjacentHTML('afterend', con2);
+}
+
+// Close Winner Summary //
+closeButton.addEventListener('click', closeWinnerOutput);
+
+function closeWinnerOutput() {
+  winnerBox.remove();
+}
+
+// shorter function for clear feature, will comment out intial clear function //
+// added class name of playerInput to input textboxes line 50, 58, 71, and 79 in html//
+function clearInputs() {
+  for (i = 0; i < playerInputBox.length; i++) {
+    playerInputBox[i].value = "";
+  }
+  submitButton.disabled = true;
+  clearButton.disabled = true;
 }

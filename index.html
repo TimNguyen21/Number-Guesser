@@ -26,6 +26,7 @@
             <div>
               <input type="text" class="max-range-input" id="max-range" />
             </div>
+            <div id="range-error">Must be less than min</div>
           </section>
           <section>
             <div>
@@ -36,7 +37,7 @@
 <!-- first box end -->
 <!-- second box begin -->
         <article class="box box2">
-          <h2 class="current-range-header">The Current Range is <span id="min-span">1</span> to <span id="max-span">100</span></h2>
+          <h2 class="current-range-header">The Current Range is <span id="min-span">min?</span> to <span id="max-span">max?</span></h2>
           <section>
             <h2>Challenger 1</h2>
           </section>
@@ -46,7 +47,7 @@
                 <h3 class="challenger-intext-label">name</h3>
               </article>
               <article>
-                <input type="text" class="challenger-1-name-input" id="one-name" />
+                <input type="text" class="player-input-box challenger-1-name-input" id="one-name" />
               </article>
             </section>
             <section>
@@ -54,7 +55,7 @@
                 <h3 class="challenger-intext-label">guess</h3>
               </article>
               <article>
-                <input type="text" class="challenger-1-guess-input" id="one-guess" />
+                <input type="text" class="player-input-box challenger-1-guess-input" id="one-guess" />
               </article>
             </section>
           </section>
@@ -67,7 +68,7 @@
                 <h3 class="challenger-intext-label">name</h3>
               </article>
               <article>
-                <input type="text" class="challenger-2-name-input" id="two-name" />
+                <input type="text" class="player-input-box challenger-2-name-input" id="two-name" />
               </article>
             </section>
             <section>
@@ -75,7 +76,7 @@
                 <h3 class="challenger-intext-label">guess</h3>
               </article>
               <article>
-                <input type="text" class="challenger-2-guess-input" id="two-guess" />
+                <input type="text" class="player-input-box challenger-2-guess-input" id="two-guess" />
               </article>
             </section>
           </section>
@@ -120,16 +121,16 @@
       <section class="box container2">
         <article class="winner-output">
           <article class="winner-info-header">
-            <div class="winner-ouput-label">challenger 1</div>
+            <div class="winner-ouput-label" id="outcome-name-one">challenger 1</div>
             <div>vs</div>
-            <div class="winner-ouput-label">challenger 2</div>
+            <div class="winner-ouput-label" id="outcome-name-two">challenger 2</div>
           </article>
           <article class="winner-info-main">
             <div id="winner-name">Winner Name</div>
             <div class="winner-tag">winner</div>
           </article>
           <article class="winner-info-footer">
-            <div>guesses</div>
+            <div class="summary-guesses">guesses</div>
             <div>time</div>
             <div id="close-winner-output">X</div>
           </article>
