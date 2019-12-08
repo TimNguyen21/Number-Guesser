@@ -110,6 +110,8 @@ function updateRange() {
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
   correctNumber = getRandomRange(min, max);
+  minRange.value = ""; // clear value in min range box after valid update
+  maxRange.value = ""; // clear value in max range box after valid update
 }
 
 function checkRange() {
@@ -137,7 +139,7 @@ var winnerBox = document.querySelector('.winner-output'); // .player-inputbox li
 var playerInputBox = document.querySelectorAll('.player-input-box'); // new ID for Challenger 1 name for Winner Summary line 124 html
 var outcomeNameOne = document.querySelector('#outcome-name-one'); // new ID for Challenger 2 name for Winner Summary line 126 html
 var outcomeNameTwo = document.querySelector('#outcome-name-two');
-var gameCount = []; // each entry in the array is one game count
+var gameCount = ["+"]; // each entry in the array is one game count
 var summaryGuesses = document.querySelector('.summary-guesses'); // added new class "summary-guesses" to the line pf guesses in Winner Summary, line 133 html
 
 var con2 = document.querySelector('.container2');
@@ -147,7 +149,8 @@ function updateWinner() {
   outcomeNameOne.innerText = oneName.value;
   outcomeNameTwo.innerText = twoName.value;
   var d1 = winnerBox;
-  summaryGuesses.innerText = count.length; // this enter number of guesses into Winner Summary
+  summaryGuesses.innerText = gameCount.length; // this enter number of guesses into Winner Summary
+  gameCount.length = 0; // the array reset to default when a game is complete
   // d1.insertAdjacentHTML('afterend', con2);
 }
 
