@@ -17,7 +17,7 @@ var maxRange = document.querySelector('#max-range');
 var minSpan = document.querySelector('#min-span');
 var maxSpan = document.querySelector('#max-span');
 var updateButton = document.querySelector('#update-button');
-var errorIcon = document.querySelector('#error');
+var errorIcon = document.querySelector('#range-error'); // rename ID from error to range-error in HTNL, CSS, JS
 var winnerName = document.querySelector('#winner-name');
 
 submitButton.disabled = true;
@@ -128,14 +128,12 @@ function checkRange() {
   }
 }
 
+//
 // new code below //
-var closeButton = document.querySelector('#close');
-var winnerBox = document.querySelector('.winner-output');
-// .player-inputbox line 42-59 html //
-var playerInputBox = document.querySelectorAll('.player-input-box');
-// new ID for Challenger 1 name for Winner Summary line 97 html//
-var outcomeNameOne = document.querySelector('#outcome-name-one');
-// new ID for Challenger 1 name for Winner Summary line 99 html//
+var closeButton = document.querySelector('#close-winner-output');
+var winnerBox = document.querySelector('.winner-output'); // .player-inputbox line 122-127 html
+var playerInputBox = document.querySelectorAll('.player-input-box'); // new ID for Challenger 1 name for Winner Summary line 124 html
+var outcomeNameOne = document.querySelector('#outcome-name-one'); // new ID for Challenger 2 name for Winner Summary line 126 html
 var outcomeNameTwo = document.querySelector('#outcome-name-two');
 
 // This function will update information on Winner's Summary //
@@ -152,7 +150,7 @@ function closeWinnerOutput() {
 }
 
 // shorter function for clear feature, will comment out intial clear function //
-// added class name of playerInput to input textboxes 42 - 59 line in html//
+// added class name of playerInput to input textboxes line 50, 58, 71, and 79 in html//
 function clearInputs() {
   for (i = 0; i < playerInputBox.length; i++) {
     playerInputBox[i].value = "";
