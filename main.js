@@ -96,7 +96,7 @@ function checkGuess(guessInput, feedbackMessage) {
     updateWinner();
     // clear guess form
     clearGuessForm();
-    //
+    // create new rnadom correctNumber
     newCorrectNumber();
   } else if (currentGuess > correctNumber) {
     feedbackMessage.innerText = "that's too high";
@@ -113,6 +113,7 @@ function updateRange() {
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
   correctNumber = getRandomRange(min, max);
+  // remove clearing of min and max value so that min and max stay consistent throughout game
   // minRange.value = ""; // clear value in min range box after valid update
   // maxRange.value = ""; // clear value in max range box after valid update
 }
@@ -182,6 +183,7 @@ function clearGuessForm() {
   twoGuess.innerText = "";
 }
 
+// this function will generate new correctNumber
 function newCorrectNumber() {
   var min = parseInt(minRange.value);
   var max = parseInt(maxRange.value);
