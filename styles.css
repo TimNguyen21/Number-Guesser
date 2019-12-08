@@ -255,7 +255,6 @@ header strong {
   text-transform: uppercase;
 }
 
-#range-error {
-  visibility: hidden;
-  color: #dd1972;
+.error-highlight {
+  border: 2px solid #dd1972;
 }
