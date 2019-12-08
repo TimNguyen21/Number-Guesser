@@ -80,12 +80,12 @@ function updateLatestGuess() {
   checkGuess(oneGuess, oneFeedback);
   checkGuess(twoGuess, twoFeedback);
   oneGuess.value = "";
+  gameCount.push("+"); // oneGuess count
   twoGuess.value = "";
+  gameCount.push("+"); // twoGuess count
   submitButton.disabled = true;
   clearButton.disabled = true;
   resetButton.disabled = true;
-  // gameCount determine how many guess are taken until someone guess correctly
-  gameCount.push("+");
 }
 
 function checkGuess(guessInput, feedbackMessage) {
