@@ -205,11 +205,11 @@ function checkRange() {
     errorMessage.innerText = '';
     maxRange.classList.remove('error-highlight');
     updateButton.disabled = true;
-  } else if (minRange.value < maxRange.value) {
+  } else if (parseInt(minRange.value) < parseInt(maxRange.value)) {
     errorMessage.innerText = '';
     maxRange.classList.remove('error-highlight');
     updateButton.disabled = false;
-  } else if (minRange.value >= maxRange.value) {
+  } else if (parseInt(minRange.value) >= parseInt(maxRange.value)) {
     errorMessage.innerText = 'Must be larger than min!';
     maxRange.classList.add('error-highlight');
     updateButton.disabled = true;
