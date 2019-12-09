@@ -11,29 +11,25 @@
       <p class="main-sub-header"> ultimate challenger edition </p>
     </header>
     <main>
-      <section class="boxes container">
-        <article class="box box1">
-          <section>
-            <h2>Set Range</h2>
-            <h3 class="min-range-column">Min Range</h3>
-            <div>
-              <input type="text" class="min-range-input" id="min-range" />
+      <section>
+        <article class="set-range">
+          <h2>Set Range</h2>
+          <div class="row">
+            <div class="column">
+              <label>Min Range</label>
+              <input type="number" id="min-range" />
             </div>
-          </section>
-          <section>
-            <h3 class="max-range-column">Max Range</h3>
-            <div>
-              <input type="text" class="max-range-input" id="max-range" />
+            <div class="column">
+              <div class="row">
+                <div class="column">
+                  <label>Max Range</label>
+                  <input type="number" id="max-range" />
+                </div>
+                <button type="button" class="update-button" id="update-button">update</button>
+              </div>
+              <p id="error-message"></p>
             </div>
-            <div id="range-error"></div>
-          </section>
-          <section>
-            <div>
-              <button type="button" class="update-button" id="update-button">update</button>
-            </div>
-          </section>
-          <p id="error-message"></p>
-          </p>
+          </div>
         </article>
         <article class="box box2">
           <h2 class="current-range-header">The Current Range is <span id="min-span">min?</span> to <span id="max-span">max?</span></h2>
