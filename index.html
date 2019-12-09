@@ -6,145 +6,101 @@
     <title>Number Guesser</title>
   </head>
   <body>
-    <header class="main-header">
-      <strong>Number</strong>Guesser
-      <div class="main-sub-header"> ultimate challenger edition </div>
+    <header>
+      <h1><span>Number</span>Guesser</h1>
+      <p class="main-sub-header"> ultimate challenger edition </p>
     </header>
     <main>
-      <section class="boxes container">
-<!--  first box begin      -->
-        <article class="box box1">
-          <section>
-            <h2>Set Range</h2>
-            <h3 class="min-range-column">Min Range</h3>
-            <div>
-              <input type="text" class="min-range-input" id="min-range" />
+      <section>
+        <article class="set-range">
+          <h2>Set Range</h2>
+          <div class="row">
+            <div class="column">
+              <label>Min Range</label>
+              <input type="number" id="min-range" />
             </div>
-          </section>
-          <section>
-            <h3 class="max-range-column">Max Range</h3>
-            <div>
-              <input type="text" class="max-range-input" id="max-range" />
+            <div class="column">
+              <div class="row">
+                <div class="column">
+                  <label>Max Range</label>
+                  <input type="number" id="max-range" />
+                </div>
+                <button type="button" class="update-button" id="update-button">update</button>
+              </div>
+              <p class="error" id="error-message"></p>
             </div>
-            <div id="range-error"></div>
-          </section>
-          <section>
-            <div>
-              <button type="button" class="update-button" id="update-button">update</button>
-            </div>
-          </section>
-          <p id="error-message"></p>
-          </p>
+          </div>
         </article>
-<!-- first box end -->
-<!-- second box begin -->
-        <article class="box box2">
-          <h2 class="current-range-header">The Current Range is <span id="min-span">min?</span> to <span id="max-span">max?</span></h2>
-          <section>
+        <article class="guess-form">
+          <p class="current-range-message">The Current Range is <span class="range-span" id="min-span">1</span> to <span class="range-span" id="max-span">100</span></p>
+          <div>
             <h2>Challenger 1</h2>
-          </section>
-          <section class="challenger-input-info">
-            <section>
-              <article>
-                <h3 class="challenger-intext-label">name</h3>
-              </article>
-              <article>
-                <input type="text" class="player-input-box challenger-1-name-input" id="one-name" />
-              </article>
-            </section>
-            <section>
-              <article>
-                <h3 class="challenger-intext-label">guess</h3>
-              </article>
-              <article>
-                <input type="text" class="player-input-box challenger-1-guess-input" id="one-guess" />
-              </article>
-              <article>
-                <div class = "range-error-one"></div>
-              </article>
-            </section>
-          </section>
-          <section>
+            <div class="row">
+              <div class="column">
+                <label>Name</label>
+                <input type="text" id="one-name" />
+              </div>
+              <div class="column">
+                <label class="challenger-intext-label">Guess</label>
+                <input type="text" id="one-guess" />
+                <p class="error"></p>
+              </div>
+            </div>
+          </div>
+          <div>
             <h2>Challenger 2</h2>
-          </section>
-          <section class="challenger-input-info">
-            <section>
-              <article>
-                <h3 class="challenger-intext-label">name</h3>
-              </article>
-              <article>
-                <input type="text" class="player-input-box challenger-2-name-input" id="two-name" />
-              </article>
-            </section>
-            <section>
-              <article>
-                <h3 class="challenger-intext-label">guess</h3>
-              </article>
-              <article>
-                <input type="text" class="player-input-box challenger-2-guess-input" id="two-guess" />
-              </article>
-              <article>
-                <div class="range-error-two"></div>
-              </article>
-            </section>
-          </section>
-          <section class="current-range-section-buttons">
-            <article>
-              <button type="button" class="submit-guess-button" id="submit-button">submit guess</button>
-            </article>
-            <article>
-              <button type="button" class="reset-game-button" id="reset-button">reset game</button>
-            </article>
-            <article>
-              <button type="button" class="clear-form-button" id="clear-button">clear form</button>
-            </article>
-          </section>
+            <div class="row">
+              <div class="column">
+                <label>Name</label>
+                <input type="text" id="two-name" />
+              </div>
+              <div class="column">
+                <label>guess</label>
+                <input type="number" id="two-guess" />
+                <p class="error"></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <button type="button" id="submit-button">submit guess</button>
+            <button type="button" id="reset-button">reset game</button>
+            <button type="button" id="clear-button">clear form</button>
+          </div>
         </article>
-<!-- second box end     -->
-<!-- third box begin -->
-        <article class="box box3">
-          <h2>Latest Guess</h2>
-          <div class="latest-guess-container">
-            <section class="challenger-1-latest-guess-label">
-              <article id="one-challenger">
-                <h2>Challenger 1 name</h2>
-              </article>
-              <article>current guess</article>
-              <p class="current-guess-output" id="one-latest-guess">?</p>
-              <article id="one-guess-feedback">test you luck!</article>
-            </section>
-            <div class="latest-guess-mid-border"></div>
-            <section class="challenger-2-latest-guess-label">
-              <article id="two-challenger">
-                <h2>Challenger 2 name</h2>
-              </article>
-              <article>current guess</article>
-              <p class="current-guess-output" id="two-latest-guess">?</p>
-              <article id="two-guess-feedback">test your luck!</article>
-            </section>
+        <article class="latest-guess">
+          <div class="column">
+            <h2>Latest Guess</h2>
+            <h3 id="one-challenger">Challenger 1 name</h3>
+            <p>current guess</p>
+            <p class="current-guess-output" id="one-latest-guess">?</p>
+            <p id="one-guess-feedback">no guesses yet</p>
+          </div>
+          <div class="column">
+            <h3 id="two-challenger">Challenger 2 name</h2>
+            <p>current guess</p>
+            <p class="current-guess-output" id="two-latest-guess">?</p>
+            <p id="two-guess-feedback">no guesses yet</p>
           </div>
         </article>
       </section>
-<!-- third box end -->
-      <section class="box container2">
-        <article class="winner-output">
-          <article class="winner-info-header">
-            <div class="winner-ouput-label" id="outcome-name-one">challenger 1</div>
-            <div>vs</div>
-            <div class="winner-ouput-label" id="outcome-name-two">challenger 2</div>
-          </article>
-          <article class="winner-info-main">
-            <div id="winner-name">Winner Name</div>
-            <div class="winner-tag">winner</div>
-          </article>
-          <article class="winner-info-footer">
-            <div><span class="summary-guesses"></span> guesses</div>
-            <div>time</div>
+      <section id="card-section">
+        <article id="winner-card">
+          <div class="row">
+            <p id="outcome-name-one">challenger 1</p>
+            <p>vs</p>
+            <p id="outcome-name-two">challenger 2</p>
+          </div>
+          <div class="column">
+            <p id="winner-name">Winner Name</p>
+            <p>winner</p>
+          </div>
+          <div class="row">
+            <p><span id="summary-guesses">47</span> guesses</p>
+            <p><span>1</span> minute <span>35</span> seconds</p>
             <button id="close-winner-output">X</button>
-          </article>
+          </div>
         </article>
       </section>
-<!-- </section> -->
     </main>
   </body>
   <script src="main.js"></script>
