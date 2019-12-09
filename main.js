@@ -1,4 +1,6 @@
-var correctNumber = getRandomRange(1, 100);
+var currentMin = 1;
+var currentMax = 100;
+var correctNumber = getRandomRange(currentMin, currentMax);
 var oneName = document.querySelector('#one-name');
 var twoName = document.querySelector('#two-name');
 var oneGuess = document.querySelector('#one-guess');
@@ -97,7 +99,8 @@ function checkGuess(guessInput, feedbackMessage) {
     // clear guess form
     clearGuessForm();
     // create new rnadom correctNumber
-    newCorrectNumber();
+    // newCorrectNumber();
+    correctNumber = getRandomRange(currentMin, currentMax);
   } else if (currentGuess > correctNumber) {
     feedbackMessage.innerText = "that's too high";
   } else if (currentGuess < correctNumber) {
@@ -110,31 +113,31 @@ function checkGuess(guessInput, feedbackMessage) {
 function updateRange() {
   minSpan.innerText = minRange.value;
   maxSpan.innerText = maxRange.value;
-  var min = parseInt(minRange.value);
-  var max = parseInt(maxRange.value);
-  correctNumber = getRandomRange(min, max);
-  // remove clearing of min and max value so that min and max stay consistent throughout game
-  // minRange.value = ""; // clear value in min range box after valid update
-  // maxRange.value = ""; // clear value in max range box after valid update
+  currentMin = parseInt(minRange.value);
+  currentMax = parseInt(maxRange.value);
+  correctNumber = getRandomRange(currentMin, currentMax);
+  minRange.value = ""; // clear value in min range box after valid update
+  maxRange.value = ""; // clear value in max range box after valid update
+  updateButton.disabled = true;
 }
 
-function checkRange() {
-  var min = parseInt(minRange.value);
-  var max = parseInt(maxRange.value);
-// remove the style when ccs enable/disable property is implemented //
-  if (min >= max) {
-    errorIcon.style.visibility = 'visible';
-    maxRange.style.borderColor = '#dd1972';
-  } else {
-    errorIcon.style.visibility = 'hidden';
-    maxRange.style.border = '1px solid #d0d2d3';
-  }
-  if (min < max) {
-    updateButton.disabled = false;
-  } else {
-    updateButton.disabled = true;
-  }
-}
+// function checkRange() {
+//   var min = parseInt(minRange.value);
+//   var max = parseInt(maxRange.value);
+// // remove the style when ccs enable/disable property is implemented //
+//   if (min >= max) {
+//     errorIcon.style.visibility = 'visible';
+//     maxRange.style.borderColor = '#dd1972';
+//   } else {
+//     errorIcon.style.visibility = 'hidden';
+//     maxRange.style.border = '1px solid #d0d2d3';
+//   }
+//   if (min < max) {
+//     updateButton.disabled = false;
+//   } else {
+//     updateButton.disabled = true;
+//   }
+// }
 
 //
 // new code below //
@@ -184,8 +187,31 @@ function clearGuessForm() {
 }
 
 // this function will generate new correctNumber
-function newCorrectNumber() {
-  var min = parseInt(minRange.value);
-  var max = parseInt(maxRange.value);
-  correctNumber = getRandomRange(min, max);
+// function newCorrectNumber() {
+//   var min = parseInt(minRange.value);
+//   var max = parseInt(maxRange.value);
+//   correctNumber = getRandomRange(min, max);
+// }
+
+var errorMessage = document.querySelector('#error-message');
+
+minRange.addEventListener('click', checkRange);
+minRange.addEventListener('keyup', checkRange);
+maxRange.addEventListener('click', checkRange);
+maxRange.addEventListener('keyup', checkRange);
+
+function checkRange() {
+  if (maxRange.value == '') {
+    errorMessage.innerText = '';
+    maxRange.classList.remove('error-highlight');
+    updateButton.disabled = true;
+  } else if (minRange.value < maxRange.value) {
+    errorMessage.innerText = '';
+    maxRange.classList.remove('error-highlight');
+    updateButton.disabled = false;
+  } else if (minRange.value >= maxRange.value) {
+    errorMessage.innerText = 'Must be larger than min!';
+    maxRange.classList.add('error-highlight');
+    updateButton.disabled = true;
+  }
 }
