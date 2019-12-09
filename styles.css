@@ -46,6 +46,11 @@ button:hover:enabled {
   background-color: #dd1792;
 }
 
+button:focus,
+input:focus {
+  outline: 0;
+}
+
 .main-header {
   background-color: #404041;
   text-align: center;
