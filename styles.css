@@ -1,4 +1,111 @@
-body {
+/* General Layout */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header,
+main,
+article,
+div.row,
+div.column {
+  display: flex;
+}
+
+header,
+article,
+div.column {
+  flex-direction: column;
+}
+
+main,
+article.latest-guess,
+div.row {
+  flex-direction: row;
+  justify-content: space-between;
+/*   align-items: flex-end; */
+}
+
+main {
+  align-items: flex-start;
+}
+
+main {
+  background-color: darkgray;
+}
+
+section {
+  width: 50%;
+  background-color: lightgray;
+  border-right: 2px solid gray;
+}
+
+article {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* Header */
+header {
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 30px;
+  text-transform: uppercase;
+}
+
+/* Set Range */
+article.set-range button {
+  align-self: flex-end;
+}
+
+article.set-range div.column p {
+  background-color: red;
+}
+
+/* Guess Form */
+.guess-form {
+  justify-content: space-between;
+  height: 250px;
+}
+
+/* Latest Guess */
+article.latest-guess {
+  justify-content: center;
+}
+
+article.latest-guess div.column {
+  align-items: center;
+  width: 50%;
+}
+
+article.latest-guess div.column:first-child {
+  border-right: 2px solid lightgray;
+}
+
+article.latest-guess div.column:nth-child(2n) {
+  align-self: flex-end;
+}
+
+article.latest-guess h2 {
+  align-self: flex-start;
+}
+
+/* Winner Card */
+article.winner-card div.row {
+  justify-content: center;
+}
+
+article.winner-card div.column {
+  align-items: center;
+}
+
+article.winner-card div.row:first-child p:nth-child(2) {
+  margin: 0px 20px;
+}
+
+/* body {
   font-family: 'Open Sans', sans-serif;
   color: #6e6e6e;
 }
@@ -291,4 +398,4 @@ header strong {
 
 .error-highlight {
   border: 2px solid #dd1972;
-}
+} */
