@@ -159,6 +159,7 @@ function updateWinner() {
   summaryGuesses.innerText = gameCount.length; // this enter number of guesses into Winner Summary
   gameCount.length = 0; // the array reset to default when a game is complete
   // d1.insertAdjacentHTML('afterend', con2);
+  winnerNameOutput(); // this function will update winner name
 }
 
 // Close Winner Summary //
@@ -245,5 +246,14 @@ function rangeErrorCheckTwo() {
     submitButton.disabled = true;
   } else {
     rangeErrorMessageTwo.innerText = "";
+  }
+}
+
+// this function will update winner of the number guesser
+function winnerNameOutput() {
+  if (parseInt(oneGuess.value) === correctNumber) {
+    winnerName.innerText = oneName.value;
+  } else if (parseInt(twoGuess.value) === correctNumber) {
+    winnerName.innerText = twoName.value;
   }
 }
