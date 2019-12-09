@@ -1,4 +1,6 @@
-var correctNumber = getRandomRange(1, 100);
+var currentMin = 1;
+var currentMax = 100;
+var correctNumber = getRandomRange(currentMin, currentMax);
 var oneName = document.querySelector('#one-name');
 var twoName = document.querySelector('#two-name');
 var oneGuess = document.querySelector('#one-guess');
@@ -97,7 +99,8 @@ function checkGuess(guessInput, feedbackMessage) {
     // clear guess form
     clearGuessForm();
     // create new rnadom correctNumber
-    newCorrectNumber();
+    // newCorrectNumber();
+    correctNumber = getRandomRange(currentMin, currentMax);
   } else if (currentGuess > correctNumber) {
     feedbackMessage.innerText = "that's too high";
   } else if (currentGuess < correctNumber) {
@@ -110,9 +113,9 @@ function checkGuess(guessInput, feedbackMessage) {
 function updateRange() {
   minSpan.innerText = minRange.value;
   maxSpan.innerText = maxRange.value;
-  var min = parseInt(minRange.value);
-  var max = parseInt(maxRange.value);
-  correctNumber = getRandomRange(min, max);
+  currentMin = parseInt(minRange.value);
+  currentMax = parseInt(maxRange.value);
+  correctNumber = getRandomRange(currentMin, currentMax);
   minRange.value = ""; // clear value in min range box after valid update
   maxRange.value = ""; // clear value in max range box after valid update
   updateButton.disabled = true;
@@ -184,11 +187,11 @@ function clearGuessForm() {
 }
 
 // this function will generate new correctNumber
-function newCorrectNumber() {
-  var min = parseInt(minRange.value);
-  var max = parseInt(maxRange.value);
-  correctNumber = getRandomRange(min, max);
-}
+// function newCorrectNumber() {
+//   var min = parseInt(minRange.value);
+//   var max = parseInt(maxRange.value);
+//   correctNumber = getRandomRange(min, max);
+// }
 
 var errorMessage = document.querySelector('#error-message');
 
