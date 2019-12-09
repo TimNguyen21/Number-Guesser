@@ -82,6 +82,15 @@ input:focus {
   outline: 0;
 }
 
+p.error {
+  color: #dd1972;
+  font-size: 14px;
+}
+
+.error-highlight {
+  border: 2px solid #dd1972;
+}
+
 /* Header */
 header {
   display: flex;
@@ -122,10 +131,6 @@ header p:before {
 /* Set Range */
 article.set-range button {
   align-self: flex-end;
-}
-
-article.set-range div.column p {
-  background-color: red;
 }
 
 /* Guess Form */
