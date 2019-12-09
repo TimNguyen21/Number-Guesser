@@ -266,7 +266,7 @@ header strong {
 } */
 
 
-.challenger-input-info {
+/* .challenger-input-info {
   display: flex;
   justify-content: space-between;
   width: 400px;
@@ -321,7 +321,7 @@ header strong {
 
 .challenger-1-latest-guess-label {
   /* border-right: 2px solid; */
-  display: absolute;
+  /* display: absolute;
 }
 
 #one-guess-feedback, #two-guess-feedback {
@@ -336,7 +336,7 @@ header strong {
 }
 
 .current-guess-output {
-  /* Border: 2px solid; */
+  Border: 2px solid;
   height: 100px;
   width: 100%;
   text-align: center;
@@ -398,4 +398,4 @@ header strong {
 
 .error-highlight {
   border: 2px solid #dd1972;
-} */
+}

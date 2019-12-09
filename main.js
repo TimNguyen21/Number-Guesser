@@ -64,15 +64,15 @@ function enableClear() {
   }
 }
 
-// New function is found at end of JS Document, discription is provided at th end //
-// function clearInputs() {
-//   oneName.value = "";
-//   twoName.value = "";
-//   oneGuess.value = "";
-//   twoGuess.value = "";
-//   submitButton.disabled = true;
-//   clearButton.disabled = true;
-// }
+// Re-using this function for now //
+function clearInputs() {
+  oneName.value = "";
+  twoName.value = "";
+  oneGuess.value = "";
+  twoGuess.value = "";
+  submitButton.disabled = true;
+  clearButton.disabled = true;
+}
 
 function updateLatestGuess() {
   oneChallenger.innerText = oneName.value;
@@ -147,7 +147,7 @@ var playerInputBox = document.querySelectorAll('.player-input-box'); // new ID f
 var outcomeNameOne = document.querySelector('#outcome-name-one'); // new ID for Challenger 2 name for Winner Summary line 126 html
 var outcomeNameTwo = document.querySelector('#outcome-name-two');
 var gameCount = ["+", "+"]; // each entry in the array is one game count
-var summaryGuesses = document.querySelector('.summary-guesses'); // added new class "summary-guesses" to the line pf guesses in Winner Summary, line 133 html
+var summaryGuesses = document.querySelector('#summary-guesses'); // added new class "summary-guesses" to the line pf guesses in Winner Summary, line 133 html
 
 // var con2 = document.querySelector('.container2'); // ongoing code test
 
@@ -170,13 +170,14 @@ function closeWinnerOutput() {
 
 // shorter function for clear feature, will comment out intial clear function //
 // added class name of playerInput to input textboxes line 50, 58, 71, and 79 in html//
-function clearInputs() {
-  for (i = 0; i < playerInputBox.length; i++) {
-    playerInputBox[i].value = "";
-  }
-  submitButton.disabled = true;
-  clearButton.disabled = true;
-}
+// Had to re-implement old function
+// function clearInputs() {
+//   for (i = 0; i < playerInputBox.length; i++) {
+//     playerInputBox[i].value = "";
+//   }
+//   submitButton.disabled = true;
+//   clearButton.disabled = true;
+// }
 
 // this will clear guess form after game is complete
 function clearGuessForm() {

@@ -32,7 +32,7 @@
           </div>
         </article>
         <article class="guess-form">
-          <p class="current-range-message">The Current Range is <span class="range-span">1</span> to <span class="range-span">100</span></p>
+          <p class="current-range-message">The Current Range is <span class="range-span" id="min-span">1</span> to <span class="range-span" id="max-span">100</span></p>
           <div>
             <h2>Challenger 1</h2>
             <div class="row">
@@ -52,7 +52,7 @@
             <div class="row">
               <div class="column">
                 <label>Name</label>
-                <input type="number" id="two-name" />
+                <input type="text" id="two-name" />
               </div>
               <div class="column">
                 <label>guess</label>
@@ -69,8 +69,8 @@
         </article>
         <article class="latest-guess">
           <div class="column">
-            <h2 id="one-challenger">Latest Guess</h2>
-            <h3>Challenger 1 name</h3>
+            <h2>Latest Guess</h2>
+            <h3 id="one-challenger">Challenger 1 name</h3>
             <p>current guess</p>
             <p class="current-guess-output" id="one-latest-guess">?</p>
             <p id="one-guess-feedback">no guesses yet</p>
@@ -95,7 +95,7 @@
             <p>winner</p>
           </div>
           <div class="row">
-            <p><span>47</span> guesses</p>
+            <p><span id="summary-guesses">47</span> guesses</p>
             <p><span>1</span> minute <span>35</span> seconds</p>
             <button id="close-winner-output">X</button>
           </div>
