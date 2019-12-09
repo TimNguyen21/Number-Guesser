@@ -215,3 +215,29 @@ function checkRange() {
     updateButton.disabled = true;
   }
 }
+// new code for error message when guesses are outside the range
+var rangeErrorMessageOne = document.querySelector('.range-error-one');
+var rangeErrorMessageTwo = document.querySelector('.range-error-two');
+
+document.addEventListener('keyup', rangeErrorCheckOne);
+document.addEventListener('keyup', rangeErrorCheckTwo);
+
+function rangeErrorCheckOne() {
+  if (parseInt(oneGuess.value) < currentMin) {
+    rangeErrorMessageOne.innerText = "cannot be lower than min";
+  } else if (parseInt(oneGuess.value) > currentMax) {
+    rangeErrorMessageOne.innerText = "cannot be bigger than max";
+  } else {
+    rangeErrorMessageOne.innerText = "";
+  }
+}
+
+function rangeErrorCheckTwo() {
+  if (parseInt(twoGuess.value) < currentMin) {
+    rangeErrorMessageTwo.innerText = "cannot be lower than min";
+  } else if (parseInt(twoGuess.value) > currentMax) {
+    rangeErrorMessageTwo.innerText = "cannot be bigger than max";
+  } else {
+    rangeErrorMessageTwo.innerText = "";
+  }
+}
