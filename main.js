@@ -87,7 +87,7 @@ function updateLatestGuess() {
   gameCount.push("+"); // twoGuess count
   submitButton.disabled = true;
   clearButton.disabled = true;
-  resetButton.disabled = true;
+  // resetButton.disabled = true; //reset button remain active becuase it is used to reset game at any time
 }
 
 function checkGuess(guessInput, feedbackMessage) {
@@ -149,16 +149,12 @@ var outcomeNameTwo = document.querySelector('#outcome-name-two');
 var gameCount = ["+", "+"]; // each entry in the array is one game count
 var summaryGuesses = document.querySelector('#summary-guesses'); // added new class "summary-guesses" to the line pf guesses in Winner Summary, line 133 html
 
-// var con2 = document.querySelector('.container2'); // ongoing code test
-
 // This function will update information on Winner's Summary //
 function updateWinner() {
   outcomeNameOne.innerText = oneName.value;
   outcomeNameTwo.innerText = twoName.value;
-  var d1 = winnerBox;
   summaryGuesses.innerText = gameCount.length; // this enter number of guesses into Winner Summary
   gameCount.length = 0; // the array reset to default when a game is complete
-  // d1.insertAdjacentHTML('afterend', con2);
   winnerNameOutput(); // this function will update winner name
 }
 
@@ -258,7 +254,9 @@ function winnerNameOutput() {
   }
 }
 
-resetButton.addEventListener('clear', resetGame);
+// function below will reset game to default with new generated correct number
+document.addEventListener('keyup', enableReset);
+resetButton.addEventListener('click', resetGame);
 
 function enableReset() {
   var hasMin = minRange.value !== "";
@@ -282,6 +280,7 @@ function resetGame() {
   submitButton.disabled = true;
   clearButton.disabled = true;
   updateButton.disabled = true;
+  resetButton.disabled = true;
 }
 
 function clearAllField() {
