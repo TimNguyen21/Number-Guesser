@@ -2,48 +2,46 @@
 var currentMin = 1;
 var currentMax = 100;
 var correctNumber = getRandomRange(currentMin, currentMax);
-var gameCount = ["+", "+"];
+var numberOfGuesses = ["+", "+"];
 // Query Selectors
 // Set Range
-var minRange = document.querySelector('#min-range');
-var maxRange = document.querySelector('#max-range');
-var errorMessage = document.querySelector('#error-message');
+var minInput = document.querySelector('#min-range');
+var maxInput = document.querySelector('#max-range');
+var rangeErrorMessage = document.querySelector('#error-message');
 var updateButton = document.querySelector('#update-button');
 // Guess Form
 var minSpan = document.querySelector('#min-span');
 var maxSpan = document.querySelector('#max-span');
-var oneName = document.querySelector('#one-name');
-var twoName = document.querySelector('#two-name');
-var oneGuess = document.querySelector('#one-guess');
-var twoGuess = document.querySelector('#two-guess');
-var rangeErrorMessageOne = document.querySelector('#range-error-one');
-var rangeErrorMessageTwo = document.querySelector('#range-error-two');
+var nameOneInput = document.querySelector('#one-name');
+var nameTwoInput = document.querySelector('#two-name');
+var guessOneInput = document.querySelector('#one-guess');
+var guessTwoInput = document.querySelector('#two-guess');
+var guessOneErrorMessage = document.querySelector('#range-error-one');
+var guessTwoErrorMessage = document.querySelector('#range-error-two');
 var submitButton = document.querySelector('#submit-button');
 var clearButton = document.querySelector('#clear-button');
 var resetButton = document.querySelector('#reset-button');
 // Latest Guess
-var oneChallenger = document.querySelector('#one-challenger');
-var twoChallenger = document.querySelector('#two-challenger');
-var oneLatestGuess = document.querySelector('#one-latest-guess');
-var twoLatestGuess = document.querySelector('#two-latest-guess');
-var oneFeedback =document.querySelector('#one-guess-feedback');
-var twoFeedback =document.querySelector('#two-guess-feedback');
+var latestGuessChallengerOne = document.querySelector('#one-challenger');
+var latestGuessChallengerTwo = document.querySelector('#two-challenger');
+var latestGuessOne = document.querySelector('#one-latest-guess');
+var latestGuessTwo = document.querySelector('#two-latest-guess');
+var feedbackMessageOne =document.querySelector('#one-guess-feedback');
+var feedbackMessageTwo =document.querySelector('#two-guess-feedback');
 // Winner Card
-var winnerBox = document.querySelector('#winner-card');
-var outcomeNameOne = document.querySelector('#outcome-name-one');
-var outcomeNameTwo = document.querySelector('#outcome-name-two');
+var winnerCard = document.querySelector('#winner-card');
+var vsNameOne = document.querySelector('#outcome-name-one');
+var vsNameTwo = document.querySelector('#outcome-name-two');
 var winnerName = document.querySelector('#winner-name');
-var summaryGuesses = document.querySelector('#summary-guesses');
+var guessesSpan = document.querySelector('#summary-guesses');
 var closeButton = document.querySelector('#close-winner-output');
-// var playerInputBox = document.querySelectorAll('.player-input-box');
-// var errorIcon = document.querySelector('#range-error');
 
 // Event Listeners
 // Set Range
-minRange.addEventListener('click', checkRange);
-minRange.addEventListener('keyup', checkRange);
-maxRange.addEventListener('click', checkRange);
-maxRange.addEventListener('keyup', checkRange);
+minInput.addEventListener('click', checkRange);
+minInput.addEventListener('keyup', checkRange);
+maxInput.addEventListener('click', checkRange);
+maxInput.addEventListener('keyup', checkRange);
 updateButton.addEventListener('click', updateRange);
 // Guess Form
 document.addEventListener('keyup', rangeErrorCheckOne);
@@ -69,65 +67,65 @@ function getRandomRange(min, max) {
 }
 // Set Range
 function checkRange() {
-  if (maxRange.value == '') {
-    errorMessage.style.visibility = "hidden";
-    maxRange.classList.remove('error-highlight');
+  if (maxInput.value == '') {
+    rangeErrorMessage.style.visibility = "hidden";
+    maxInput.classList.remove('error-highlight');
     updateButton.disabled = true;
-  } else if (parseInt(minRange.value) < parseInt(maxRange.value)) {
-    errorMessage.style.visibility = "hidden";
-    maxRange.classList.remove('error-highlight');
+  } else if (parseInt(minInput.value) < parseInt(maxInput.value)) {
+    rangeErrorMessage.style.visibility = "hidden";
+    maxInput.classList.remove('error-highlight');
     updateButton.disabled = false;
-  } else if (parseInt(minRange.value) >= parseInt(maxRange.value)) {
-    errorMessage.style.visibility = "visible";
-    maxRange.classList.add('error-highlight');
+  } else if (parseInt(minInput.value) >= parseInt(maxInput.value)) {
+    rangeErrorMessage.style.visibility = "visible";
+    maxInput.classList.add('error-highlight');
     updateButton.disabled = true;
-  } else if (minRange.value == '') {
-    errorMessage.style.visibility = "hidden";
-    maxRange.classList.remove('error-highlight');
+  } else if (minInput.value == '') {
+    rangeErrorMessage.style.visibility = "hidden";
+    maxInput.classList.remove('error-highlight');
     updateButton.disabled = true;
   }
 }
 
 function updateRange() {
-  minSpan.innerText = minRange.value;
-  maxSpan.innerText = maxRange.value;
-  currentMin = parseInt(minRange.value);
-  currentMax = parseInt(maxRange.value);
+  minSpan.innerText = minInput.value;
+  maxSpan.innerText = maxInput.value;
+  currentMin = parseInt(minInput.value);
+  currentMax = parseInt(maxInput.value);
   correctNumber = getRandomRange(currentMin, currentMax);
-  minRange.value = ""; // clear value in min range box after valid update
-  maxRange.value = ""; // clear value in max range box after valid update
+  minInput.value = ""; // clear value in min range box after valid update
+  maxInput.value = ""; // clear value in max range box after valid update
   updateButton.disabled = true;
 }
 // Guess Form
 function rangeErrorCheckOne() {
-  if (parseInt(oneGuess.value) < currentMin) {
-    rangeErrorMessageOne.style.visibility = "visible";
+  if (parseInt(guessOneInput.value) < currentMin) {
+    guessOneErrorMessage.style.visibility = "visible";
     submitButton.disabled = true;
-  } else if (parseInt(oneGuess.value) > currentMax) {
-    rangeErrorMessageOne.style.visibility = "visible";
+  } else if (parseInt(guessOneInput.value) > currentMax) {
+    guessOneErrorMessage.style.visibility = "visible";
     submitButton.disabled = true;
   } else {
-    rangeErrorMessageOne.style.visibility = "hidden";
+    guessOneErrorMessage.style.visibility = "hidden";
   }
 }
 
 function rangeErrorCheckTwo() {
-  if (parseInt(twoGuess.value) < currentMin) {
-    rangeErrorMessageTwo.style.visibility = "visible";
+  if (parseInt(guessTwoInput.value) < currentMin) {
+    guessTwoErrorMessage.style.visibility = "visible";
     submitButton.disabled = true;
-  } else if (parseInt(twoGuess.value) > currentMax) {
-    rangeErrorMessageTwo.style.visibility = "visible";
+  } else if (parseInt(guessTwoInput.value) > currentMax) {
+    guessTwoErrorMessage.style.visibility = "visible";
     submitButton.disabled = true;
   } else {
-    rangeErrorMessageTwo.style.visibility = "hidden";
+    guessTwoErrorMessage.style.visibility = "hidden";
   }
 }
 
 function enableClear() {
-  var hasOneName = oneName.value !== "";
-  var hasTwoName = twoName.value !== "";
-  var hasOneGuess = oneGuess.value !== "";
-  var hasTwoGuess = twoGuess.value !== "";
+  var hasOneName = nameOneInput.value !== "";
+  var hasTwoName = nameTwoInput.value !== "";
+  var hasOneGuess = guessOneInput.value !== "";
+  var hasTwoGuess = guessTwoInput.value !== "";
   var isFilled = hasOneName || hasTwoName || hasOneGuess || hasTwoGuess;
   if (isFilled) {
     clearButton.disabled = false;
@@ -137,10 +135,10 @@ function enableClear() {
 }
 
 function enableSubmit() {
-  var hasOneName = oneName.value !== "";
-  var hasTwoName = twoName.value !== "";
-  var hasOneGuess = oneGuess.value !== "";
-  var hasTwoGuess = twoGuess.value !== "";
+  var hasOneName = nameOneInput.value !== "";
+  var hasTwoName = nameTwoInput.value !== "";
+  var hasOneGuess = guessOneInput.value !== "";
+  var hasTwoGuess = guessTwoInput.value !== "";
   var isFilled = hasOneName && hasTwoName && hasOneGuess && hasTwoGuess;
   if (isFilled) {
     submitButton.disabled = false;
@@ -150,12 +148,12 @@ function enableSubmit() {
 }
 
 function enableReset() {
-  var hasMin = minRange.value !== "";
-  var hasMax = maxRange.value !== "";
-  var hasOneName = oneName.value !== "";
-  var hasTwoName = twoName.value !== "";
-  var hasOneGuess = oneGuess.value !== "";
-  var hasTwoGuess = twoGuess.value !== "";
+  var hasMin = minInput.value !== "";
+  var hasMax = maxInput.value !== "";
+  var hasOneName = nameOneInput.value !== "";
+  var hasTwoName = nameTwoInput.value !== "";
+  var hasOneGuess = guessOneInput.value !== "";
+  var hasTwoGuess = guessTwoInput.value !== "";
   var isFilled = hasMin || hasMax || hasOneName || hasTwoName || hasOneGuess || hasTwoGuess;
   if (isFilled) {
     resetButton.disabled = false;
@@ -165,25 +163,25 @@ function enableReset() {
 }
 
 function clearInputs() {
-  oneName.value = "";
-  twoName.value = "";
-  oneGuess.value = "";
-  twoGuess.value = "";
+  nameOneInput.value = "";
+  nameTwoInput.value = "";
+  guessOneInput.value = "";
+  guessTwoInput.value = "";
   submitButton.disabled = true;
   clearButton.disabled = true;
 }
 
 function updateLatestGuess() {
-  oneChallenger.innerText = oneName.value;
-  twoChallenger.innerText = twoName.value;
-  oneLatestGuess.innerText = oneGuess.value;
-  twoLatestGuess.innerText = twoGuess.value;
-  checkGuess(oneGuess, oneFeedback);
-  checkGuess(twoGuess, twoFeedback);
-  oneGuess.value = "";
-  gameCount.push("+"); // oneGuess count
-  twoGuess.value = "";
-  gameCount.push("+"); // twoGuess count
+  latestGuessChallengerOne.innerText = nameOneInput.value;
+  latestGuessChallengerTwo.innerText = nameTwoInput.value;
+  latestGuessOne.innerText = guessOneInput.value;
+  latestGuessTwo.innerText = guessTwoInput.value;
+  checkGuess(guessOneInput, feedbackMessageOne);
+  checkGuess(guessTwoInput, feedbackMessageTwo);
+  guessOneInput.value = "";
+  numberOfGuesses.push("+"); // guessOneInput count
+  guessTwoInput.value = "";
+  numberOfGuesses.push("+"); // guessTwoInput count
   submitButton.disabled = true;
   clearButton.disabled = true;
   // resetButton.disabled = true; //reset button remain active becuase it is used to reset game at any time
@@ -206,18 +204,18 @@ function checkGuess(guessInput, feedbackMessage) {
 }
 
 function updateWinner() {
-  outcomeNameOne.innerText = oneName.value;
-  outcomeNameTwo.innerText = twoName.value;
-  summaryGuesses.innerText = gameCount.length; // this enter number of guesses into Winner Summary
-  gameCount.length = 0; // the array reset to default when a game is complete
+  vsNameOne.innerText = nameOneInput.value;
+  vsNameTwo.innerText = nameTwoInput.value;
+  guessesSpan.innerText = numberOfGuesses.length; // this enter number of guesses into Winner Summary
+  numberOfGuesses.length = 0; // the array reset to default when a game is complete
   winnerNameOutput(); // this function will update winner name
 }
 
 function clearGuessForm() {
-  oneName.value = "";
-  twoName.value = "";
-  oneGuess.innerText = "";
-  twoGuess.innerText = "";
+  nameOneInput.value = "";
+  nameTwoInput.value = "";
+  guessOneInput.innerText = "";
+  guessTwoInput.innerText = "";
 }
 
 function resetGame() {
@@ -239,31 +237,31 @@ function defaultSetRange() {
 }
 
 function clearAllField() {
-  oneName.value = "";
-  twoName.value = "";
-  oneGuess.value = "";
-  twoGuess.value = "";
-  minRange.value = "";
-  maxRange.value = "";
+  nameOneInput.value = "";
+  nameTwoInput.value = "";
+  guessOneInput.value = "";
+  guessTwoInput.value = "";
+  minInput.value = "";
+  maxInput.value = "";
 }
 
 function defaultLatestGuess() {
-  oneChallenger.innerText = "challenger 1 name";
-  oneLatestGuess.innerText = "?";
-  oneFeedback.innerText = "no guesses yet";
-  twoChallenger.innerText = "challenger 2 name";
-  twoLatestGuess.innerText = "?";
-  twoFeedback.innerText = "no guesses yet";
+  latestGuessChallengerOne.innerText = "challenger 1 name";
+  latestGuessOne.innerText = "?";
+  feedbackMessageOne.innerText = "no guesses yet";
+  latestGuessChallengerTwo.innerText = "challenger 2 name";
+  latestGuessTwo.innerText = "?";
+  feedbackMessageTwo.innerText = "no guesses yet";
  }
 // Winner Card
 function winnerNameOutput() {
-  if (parseInt(oneGuess.value) === correctNumber) {
-    winnerName.innerText = oneName.value;
-  } else if (parseInt(twoGuess.value) === correctNumber) {
-    winnerName.innerText = twoName.value;
+  if (parseInt(guessOneInput.value) === correctNumber) {
+    winnerName.innerText = nameOneInput.value;
+  } else if (parseInt(guessTwoInput.value) === correctNumber) {
+    winnerName.innerText = nameTwoInput.value;
   }
 }
 
 function closeWinnerOutput() {
-  winnerBox.remove();
+  winnerCard.remove();
 }
