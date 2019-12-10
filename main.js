@@ -214,6 +214,10 @@ function checkRange() {
     errorMessage.style.visibility = "visible";
     maxRange.classList.add('error-highlight');
     updateButton.disabled = true;
+  } else if (minRange.value == '') {
+    errorMessage.style.visibility = "hidden";
+    maxRange.classList.remove('error-highlight');
+    updateButton.disabled = true;
   }
 }
 
