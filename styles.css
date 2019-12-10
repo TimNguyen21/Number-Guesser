@@ -37,8 +37,11 @@ main {
 
 section {
   width: 50%;
-  background-color: #f7f7f7;
   border-right: 2px solid gray;
+}
+
+section:first-child {
+  background-color: #f7f7f7;
 }
 
 article {
@@ -223,6 +226,7 @@ article.winner-card div.row:first-child p:nth-child(2) {
 
 #winner-card {
   text-transform: uppercase;
+  border: 2px solid gray;
 }
 
 #outcome-name-one,
