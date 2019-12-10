@@ -43,8 +43,19 @@ section {
 
 article {
   background-color: white;
-  padding: 10px;
-  margin: 10px;
+  padding: 15px;
+  margin: 20px;
+}
+
+h2 {
+  color: #404041;
+  font-size: 28px;
+}
+
+p,
+label {
+  color: #404041;
+  font-size: 24px;
 }
 
 button {
@@ -136,7 +147,6 @@ article.set-range button {
 /* Guess Form */
 .guess-form {
   justify-content: space-between;
-  height: 250px;
 }
 
 /* Latest Guess */
