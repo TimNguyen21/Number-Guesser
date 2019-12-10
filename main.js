@@ -38,27 +38,35 @@ var closeButton = document.querySelector('#close-winner-output');
 // var playerInputBox = document.querySelectorAll('.player-input-box');
 // var errorIcon = document.querySelector('#range-error');
 
+// Event Listeners
+// Set Range
+minRange.addEventListener('click', checkRange);
+minRange.addEventListener('keyup', checkRange);
+maxRange.addEventListener('click', checkRange);
+maxRange.addEventListener('keyup', checkRange);
+updateButton.addEventListener('click', updateRange);
+// Guess Form
+document.addEventListener('keyup', rangeErrorCheckOne);
+document.addEventListener('keyup', rangeErrorCheckTwo);
+document.addEventListener('keyup', enableSubmit);
+document.addEventListener('keyup', enableClear);
+document.addEventListener('keyup', enableReset);
+clearButton.addEventListener('click', clearInputs);
+submitButton.addEventListener('click', updateLatestGuess);
+resetButton.addEventListener('click', resetGame);
+// Winner Card
+closeButton.addEventListener('click', closeWinnerOutput);
+
+// Statements
 submitButton.disabled = true;
 clearButton.disabled = true;
 resetButton.disabled = true;
 updateButton.disabled = true;
 
-document.addEventListener('keyup', enableSubmit);
-document.addEventListener('keyup', enableClear);
-clearButton.addEventListener('click', clearInputs);
-submitButton.addEventListener('click', updateLatestGuess);
-updateButton.addEventListener('click', updateRange);
-document.addEventListener('keyup', checkRange);
-closeButton.addEventListener('click', closeWinnerOutput);
-document.addEventListener('keyup', enableReset);
-resetButton.addEventListener('click', resetGame);
-minRange.addEventListener('click', checkRange);
-minRange.addEventListener('keyup', checkRange);
-maxRange.addEventListener('click', checkRange);
-maxRange.addEventListener('keyup', checkRange);
-document.addEventListener('keyup', rangeErrorCheckOne);
-document.addEventListener('keyup', rangeErrorCheckTwo);
-
+// Functions
+// Set Range
+// Guess Form
+// Winner Card
 function getRandomRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
