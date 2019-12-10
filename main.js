@@ -257,3 +257,54 @@ function winnerNameOutput() {
     winnerName.innerText = twoName.value;
   }
 }
+
+resetButton.addEventListener('clear', resetGame);
+
+function enableReset() {
+  var hasMin = minRange.value !== "";
+  var hasMax = maxRange.value !== "";
+  var hasOneName = oneName.value !== "";
+  var hasTwoName = twoName.value !== "";
+  var hasOneGuess = oneGuess.value !== "";
+  var hasTwoGuess = twoGuess.value !== "";
+  var isFilled = hasMin || hasMax || hasOneName || hasTwoName || hasOneGuess || hasTwoGuess;
+  if (isFilled) {
+    resetButton.disabled = false;
+  } else {
+    resetButton.disabled = true;
+  }
+}
+
+function resetGame() {
+  defaultSetRange();
+  clearAllField();
+  defaultLastetGuess();
+  submitButton.disabled = true;
+  clearButton.disabled = true;
+  updateButton.disabled = true;
+}
+
+function clearAllField() {
+  oneName.value = "";
+  twoName.value = "";
+  oneGuess.value = "";
+  twoGuess.value = "";
+  minRange.value = "";
+  maxRange.value = "";
+}
+function defaultSetRange() {
+  currentMin = 1;
+  currentMax = 100;
+  correctNumber = getRandomRange(currentMin, currentMax);
+  minSpan.innerText = "1";
+  maxSpan.innerText = "100";
+}
+
+function defaultLastetGuess() {
+  oneChallenger.innerText = "challenger 1 name";
+  oneLatestGuess.innerText = "?";
+  oneFeedback.innerText = "no guesses yet";
+  twoChallenger.innerText = "challenger 2 name";
+  twoLatestGuess.innerText = "?";
+  twoFeedback.innerText = "no guesses yet";
+ }
