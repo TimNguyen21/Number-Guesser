@@ -21,6 +21,16 @@ var maxSpan = document.querySelector('#max-span');
 var updateButton = document.querySelector('#update-button');
 var errorIcon = document.querySelector('#range-error'); // rename ID from error to range-error in HTNL, CSS, JS
 var winnerName = document.querySelector('#winner-name');
+var closeButton = document.querySelector('#close-winner-output');
+var winnerBox = document.querySelector('#winner-card');
+var playerInputBox = document.querySelectorAll('.player-input-box');
+var outcomeNameOne = document.querySelector('#outcome-name-one');
+var outcomeNameTwo = document.querySelector('#outcome-name-two');
+var gameCount = ["+", "+"];
+var summaryGuesses = document.querySelector('#summary-guesses');
+var errorMessage = document.querySelector('#error-message');
+var rangeErrorMessageOne = document.querySelector('#range-error-one');
+var rangeErrorMessageTwo = document.querySelector('#range-error-two');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
@@ -33,6 +43,15 @@ clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuess);
 updateButton.addEventListener('click', updateRange);
 document.addEventListener('keyup', checkRange);
+closeButton.addEventListener('click', closeWinnerOutput);
+document.addEventListener('keyup', enableReset);
+resetButton.addEventListener('click', resetGame);
+minRange.addEventListener('click', checkRange);
+minRange.addEventListener('keyup', checkRange);
+maxRange.addEventListener('click', checkRange);
+maxRange.addEventListener('keyup', checkRange);
+document.addEventListener('keyup', rangeErrorCheckOne);
+document.addEventListener('keyup', rangeErrorCheckTwo);
 
 function getRandomRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -139,16 +158,6 @@ function updateRange() {
 //   }
 // }
 
-//
-// new code below //
-var closeButton = document.querySelector('#close-winner-output');
-var winnerBox = document.querySelector('.winner-output'); // .player-inputbox line 122-127 html
-var playerInputBox = document.querySelectorAll('.player-input-box'); // new ID for Challenger 1 name for Winner Summary line 124 html
-var outcomeNameOne = document.querySelector('#outcome-name-one'); // new ID for Challenger 2 name for Winner Summary line 126 html
-var outcomeNameTwo = document.querySelector('#outcome-name-two');
-var gameCount = ["+", "+"]; // each entry in the array is one game count
-var summaryGuesses = document.querySelector('#summary-guesses'); // added new class "summary-guesses" to the line pf guesses in Winner Summary, line 133 html
-
 // This function will update information on Winner's Summary //
 function updateWinner() {
   outcomeNameOne.innerText = oneName.value;
@@ -159,7 +168,7 @@ function updateWinner() {
 }
 
 // Close Winner Summary //
-closeButton.addEventListener('click', closeWinnerOutput);
+
 
 function closeWinnerOutput() {
   winnerBox.remove();
@@ -191,13 +200,6 @@ function clearGuessForm() {
 //   correctNumber = getRandomRange(min, max);
 // }
 
-var errorMessage = document.querySelector('#error-message');
-
-minRange.addEventListener('click', checkRange);
-minRange.addEventListener('keyup', checkRange);
-maxRange.addEventListener('click', checkRange);
-maxRange.addEventListener('keyup', checkRange);
-
 function checkRange() {
   if (maxRange.value == '') {
     errorMessage.style.visibility = "hidden";
@@ -218,12 +220,9 @@ function checkRange() {
   }
 }
 
-// new code for error message when guesses are outside the range
-var rangeErrorMessageOne = document.querySelector('#range-error-one');
-var rangeErrorMessageTwo = document.querySelector('#range-error-two');
 
-document.addEventListener('keyup', rangeErrorCheckOne);
-document.addEventListener('keyup', rangeErrorCheckTwo);
+
+
 
 function rangeErrorCheckOne() {
   if (parseInt(oneGuess.value) < currentMin) {
@@ -259,8 +258,7 @@ function winnerNameOutput() {
 }
 
 // function below will reset game to default with new generated correct number
-document.addEventListener('keyup', enableReset);
-resetButton.addEventListener('click', resetGame);
+
 
 function enableReset() {
   var hasMin = minRange.value !== "";
