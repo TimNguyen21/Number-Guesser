@@ -212,17 +212,28 @@ p.current-guess-output {
 }
 
 /* Winner Card */
-article.winner-card div.row {
-  justify-content: center;
-}
-
-article.winner-card div.column {
+#winner-card div.column {
   align-items: center;
 }
 
 article.winner-card div.row:first-child p:nth-child(2) {
   margin: 0px 20px;
 }
+
+#winner-card {
+  text-transform: uppercase;
+}
+
+#outcome-name-one,
+#outcome-name-two,
+#winner-name,
+#summary-guesses,
+#close-winner-output,
+#minutes-span,
+#seconds-span {
+  font-weight: bold;
+}
+
 
 /* body {
   font-family: 'Open Sans', sans-serif;
