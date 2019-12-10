@@ -203,15 +203,15 @@ maxRange.addEventListener('keyup', checkRange);
 
 function checkRange() {
   if (maxRange.value == '') {
-    errorMessage.innerText = '';
+    errorMessage.style.visibility = "hidden";
     maxRange.classList.remove('error-highlight');
     updateButton.disabled = true;
   } else if (parseInt(minRange.value) < parseInt(maxRange.value)) {
-    errorMessage.innerText = '';
+    errorMessage.style.visibility = "hidden";
     maxRange.classList.remove('error-highlight');
     updateButton.disabled = false;
   } else if (parseInt(minRange.value) >= parseInt(maxRange.value)) {
-    errorMessage.innerText = 'Must be larger than min!';
+    errorMessage.style.visibility = "visible";
     maxRange.classList.add('error-highlight');
     updateButton.disabled = true;
   }

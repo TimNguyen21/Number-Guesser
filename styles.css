@@ -94,9 +94,15 @@ input:focus {
   outline: 0;
 }
 
+img {
+  height: 19px;
+  width: auto;
+}
+
 p.error {
+  visibility: hidden;
   color: #dd1972;
-  font-size: 14px;
+  font-size: 20px;
   height: 19px;
 }
 
