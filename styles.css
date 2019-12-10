@@ -79,15 +79,6 @@ button {
   padding: 0px 30px;
 }
 
-button#close-winner-output {
-  width: 25px;
-  height: 25px;
-  font-weight: normal;
-  border-radius: 100%;
-  font-size: 16px;
-  padding: 0px 0px;
-}
-
 button:disabled {
   background-color: #d0d2d3;
 }
@@ -192,7 +183,7 @@ article.latest-guess div.column {
 }
 
 article.latest-guess div.column:first-child {
-  border-right: 2px solid lightgray;
+  border-right: 2px solid #d0d2d3;
 }
 
 article.latest-guess div.column:nth-child(2n) {
@@ -216,6 +207,16 @@ p.current-guess-output {
   align-items: center;
 }
 
+article#winner-card div.match-up {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#winner-card div.match-up p:nth-child(2) {
+  margin: 0px 24px;
+}
+
 article.winner-card div.row:first-child p:nth-child(2) {
   margin: 0px 20px;
 }
@@ -234,6 +235,42 @@ article.winner-card div.row:first-child p:nth-child(2) {
   font-weight: bold;
 }
 
+div.match-up p {
+  font-size: 16px;
+}
+
+#outcome-name-one,
+#outcome-name-two {
+  font-size: 24px;
+}
+
+div.winner-statement {
+  border-top: 2px solid #d0d2d3;
+  border-bottom: 2px solid #d0d2d3;
+  padding: 24px 0px;
+}
+
+div.winner-statement p {
+  font-size: 40px;
+  margin: 0;
+}
+
+div.statistics {
+  margin-top: 10px;
+}
+
+div.statistics p {
+  font-size: 24px;
+}
+
+button#close-winner-output {
+  width: 35px;
+  height: 35px;
+  font-weight: normal;
+  border-radius: 100%;
+  font-size: 24px;
+  padding: 0px 0px;
+}
 
 /* body {
   font-family: 'Open Sans', sans-serif;
