@@ -222,32 +222,32 @@ function checkRange() {
 }
 
 // new code for error message when guesses are outside the range
-var rangeErrorMessageOne = document.querySelector('.range-error-one');
-var rangeErrorMessageTwo = document.querySelector('.range-error-two');
+var rangeErrorMessageOne = document.querySelector('#range-error-one');
+var rangeErrorMessageTwo = document.querySelector('#range-error-two');
 
 document.addEventListener('keyup', rangeErrorCheckOne);
 document.addEventListener('keyup', rangeErrorCheckTwo);
 
 function rangeErrorCheckOne() {
   if (parseInt(oneGuess.value) < currentMin) {
-    rangeErrorMessageOne.innerText = "cannot be lower than min";
+    rangeErrorMessageOne.style.visibility = "visible";
     submitButton.disabled = true;
   } else if (parseInt(oneGuess.value) > currentMax) {
-    rangeErrorMessageOne.innerText = "cannot be bigger than max";
+    rangeErrorMessageOne.style.visibility = "visible";
     submitButton.disabled = true;
   } else {
-    rangeErrorMessageOne.innerText = "";
+    rangeErrorMessageOne.style.visibility = "hidden";
   }
 }
 
 function rangeErrorCheckTwo() {
   if (parseInt(twoGuess.value) < currentMin) {
-    rangeErrorMessageTwo.innerText = "cannot be lower than min";
+    rangeErrorMessageTwo.style.visibility = "visible";
     submitButton.disabled = true;
   } else if (parseInt(twoGuess.value) > currentMax) {
-    rangeErrorMessageTwo.innerText = "cannot be bigger than max";
+    rangeErrorMessageTwo.style.visibility = "visible";
     submitButton.disabled = true;
   } else {
-    rangeErrorMessageTwo.innerText = "";
+    rangeErrorMessageTwo.style.visibility = "hidden";
   }
 }

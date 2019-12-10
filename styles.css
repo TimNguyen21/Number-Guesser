@@ -103,12 +103,12 @@ p.error {
   visibility: hidden;
   color: #dd1972;
   font-size: 20px;
-  height: 19px;
+  margin: 5px 0px;
 }
 
 input {
   height: 40px;
-  width: 185px;
+  width: 225px;
   border: 2px solid #d0d2d3;
 }
 
