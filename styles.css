@@ -158,9 +158,15 @@ article.set-range button {
 }
 
 /* Guess Form */
-.guess-form {
+article.guess-form {
   justify-content: space-between;
 }
+
+span.range-span {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 
 /* Latest Guess */
 article.latest-guess {
