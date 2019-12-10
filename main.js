@@ -1,36 +1,42 @@
+// Global Variables
 var currentMin = 1;
 var currentMax = 100;
 var correctNumber = getRandomRange(currentMin, currentMax);
+var gameCount = ["+", "+"];
+// Query Selectors
+// Set Range
+var minRange = document.querySelector('#min-range');
+var maxRange = document.querySelector('#max-range');
+var errorMessage = document.querySelector('#error-message');
+var updateButton = document.querySelector('#update-button');
+// Guess Form
+var minSpan = document.querySelector('#min-span');
+var maxSpan = document.querySelector('#max-span');
 var oneName = document.querySelector('#one-name');
 var twoName = document.querySelector('#two-name');
 var oneGuess = document.querySelector('#one-guess');
 var twoGuess = document.querySelector('#two-guess');
+var rangeErrorMessageOne = document.querySelector('#range-error-one');
+var rangeErrorMessageTwo = document.querySelector('#range-error-two');
 var submitButton = document.querySelector('#submit-button');
 var clearButton = document.querySelector('#clear-button');
 var resetButton = document.querySelector('#reset-button');
+// Latest Guess
 var oneChallenger = document.querySelector('#one-challenger');
 var twoChallenger = document.querySelector('#two-challenger');
 var oneLatestGuess = document.querySelector('#one-latest-guess');
 var twoLatestGuess = document.querySelector('#two-latest-guess');
 var oneFeedback =document.querySelector('#one-guess-feedback');
 var twoFeedback =document.querySelector('#two-guess-feedback');
-var minRange = document.querySelector('#min-range');
-var maxRange = document.querySelector('#max-range');
-var minSpan = document.querySelector('#min-span');
-var maxSpan = document.querySelector('#max-span');
-var updateButton = document.querySelector('#update-button');
-var errorIcon = document.querySelector('#range-error'); // rename ID from error to range-error in HTNL, CSS, JS
-var winnerName = document.querySelector('#winner-name');
-var closeButton = document.querySelector('#close-winner-output');
+// Winner Card
 var winnerBox = document.querySelector('#winner-card');
-var playerInputBox = document.querySelectorAll('.player-input-box');
 var outcomeNameOne = document.querySelector('#outcome-name-one');
 var outcomeNameTwo = document.querySelector('#outcome-name-two');
-var gameCount = ["+", "+"];
+var winnerName = document.querySelector('#winner-name');
 var summaryGuesses = document.querySelector('#summary-guesses');
-var errorMessage = document.querySelector('#error-message');
-var rangeErrorMessageOne = document.querySelector('#range-error-one');
-var rangeErrorMessageTwo = document.querySelector('#range-error-two');
+var closeButton = document.querySelector('#close-winner-output');
+// var playerInputBox = document.querySelectorAll('.player-input-box');
+// var errorIcon = document.querySelector('#range-error');
 
 submitButton.disabled = true;
 clearButton.disabled = true;
