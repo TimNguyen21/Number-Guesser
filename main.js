@@ -87,7 +87,7 @@ function updateLatestGuess() {
   gameCount.push("+"); // twoGuess count
   submitButton.disabled = true;
   clearButton.disabled = true;
-  resetButton.disabled = true;
+  // resetButton.disabled = true; //reset button remain active becuase it is used to reset game at any time
 }
 
 function checkGuess(guessInput, feedbackMessage) {
@@ -149,16 +149,13 @@ var outcomeNameTwo = document.querySelector('#outcome-name-two');
 var gameCount = ["+", "+"]; // each entry in the array is one game count
 var summaryGuesses = document.querySelector('#summary-guesses'); // added new class "summary-guesses" to the line pf guesses in Winner Summary, line 133 html
 
-// var con2 = document.querySelector('.container2'); // ongoing code test
-
 // This function will update information on Winner's Summary //
 function updateWinner() {
   outcomeNameOne.innerText = oneName.value;
   outcomeNameTwo.innerText = twoName.value;
-  var d1 = winnerBox;
   summaryGuesses.innerText = gameCount.length; // this enter number of guesses into Winner Summary
   gameCount.length = 0; // the array reset to default when a game is complete
-  // d1.insertAdjacentHTML('afterend', con2);
+  winnerNameOutput(); // this function will update winner name
 }
 
 // Close Winner Summary //
@@ -251,3 +248,66 @@ function rangeErrorCheckTwo() {
     rangeErrorMessageTwo.style.visibility = "hidden";
   }
 }
+
+// this function will update winner of the number guesser
+function winnerNameOutput() {
+  if (parseInt(oneGuess.value) === correctNumber) {
+    winnerName.innerText = oneName.value;
+  } else if (parseInt(twoGuess.value) === correctNumber) {
+    winnerName.innerText = twoName.value;
+  }
+}
+
+// function below will reset game to default with new generated correct number
+document.addEventListener('keyup', enableReset);
+resetButton.addEventListener('click', resetGame);
+
+function enableReset() {
+  var hasMin = minRange.value !== "";
+  var hasMax = maxRange.value !== "";
+  var hasOneName = oneName.value !== "";
+  var hasTwoName = twoName.value !== "";
+  var hasOneGuess = oneGuess.value !== "";
+  var hasTwoGuess = twoGuess.value !== "";
+  var isFilled = hasMin || hasMax || hasOneName || hasTwoName || hasOneGuess || hasTwoGuess;
+  if (isFilled) {
+    resetButton.disabled = false;
+  } else {
+    resetButton.disabled = true;
+  }
+}
+
+function resetGame() {
+  defaultSetRange();
+  clearAllField();
+  defaultLatestGuess();
+  submitButton.disabled = true;
+  clearButton.disabled = true;
+  updateButton.disabled = true;
+  resetButton.disabled = true;
+}
+
+function clearAllField() {
+  oneName.value = "";
+  twoName.value = "";
+  oneGuess.value = "";
+  twoGuess.value = "";
+  minRange.value = "";
+  maxRange.value = "";
+}
+function defaultSetRange() {
+  currentMin = 1;
+  currentMax = 100;
+  correctNumber = getRandomRange(currentMin, currentMax);
+  minSpan.innerText = "1";
+  maxSpan.innerText = "100";
+}
+
+function defaultLatestGuess() {
+  oneChallenger.innerText = "challenger 1 name";
+  oneLatestGuess.innerText = "?";
+  oneFeedback.innerText = "no guesses yet";
+  twoChallenger.innerText = "challenger 2 name";
+  twoLatestGuess.innerText = "?";
+  twoFeedback.innerText = "no guesses yet";
+ }
