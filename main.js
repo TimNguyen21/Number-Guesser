@@ -276,7 +276,7 @@ function enableReset() {
 function resetGame() {
   defaultSetRange();
   clearAllField();
-  defaultLastetGuess();
+  defaultLatestGuess();
   submitButton.disabled = true;
   clearButton.disabled = true;
   updateButton.disabled = true;
@@ -299,7 +299,7 @@ function defaultSetRange() {
   maxSpan.innerText = "100";
 }
 
-function defaultLastetGuess() {
+function defaultLatestGuess() {
   oneChallenger.innerText = "challenger 1 name";
   oneLatestGuess.innerText = "?";
   oneFeedback.innerText = "no guesses yet";
