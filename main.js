@@ -195,6 +195,7 @@ function checkGuess(guessInput, feedbackMessage) {
     feedbackMessage.innerText = "BOOM!";
     updateWinner();
     clearGuessForm();
+    plusTenRange(); // this will add 10 to min and max after game complete
     correctNumber = getRandomRange(currentMin, currentMax);
   } else if (currentGuess > correctNumber) {
     feedbackMessage.innerText = "that's too high";
@@ -236,6 +237,7 @@ function defaultSetRange() {
   correctNumber = getRandomRange(currentMin, currentMax);
   minSpan.innerText = "1";
   maxSpan.innerText = "100";
+  gameCount = ["+","+"]; // restore game count to default
 }
 
 function clearAllField() {
@@ -266,4 +268,13 @@ function winnerNameOutput() {
 
 function closeWinnerOutput() {
   winnerBox.remove();
+}
+
+// new code below // add 10 to max and min when game is over
+function plusTenRange() {
+  currentMin = currentMin - 10;
+  currentMax = currentMax + 10;
+  correctNumber = getRandomRange(currentMin, currentMax);
+  minSpan.innerText = currentMin;
+  maxSpan.innerText = currentMax;
 }
