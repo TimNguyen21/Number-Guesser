@@ -33,8 +33,8 @@ var cardSection = document.querySelector('#card-section');
 var winnerCard = document.querySelector('.winner-card');
 var cardHTML = winnerCard.innerHTML;
 var winnerName = '';
-var vsNameOne = "";
-var vsNameTwo = "";
+var vsNameOne = '';
+var vsNameTwo = '';
 var guessesSpan = document.querySelector('#guesses-span');
 var closeButton = document.querySelector('#close-button');
 
@@ -72,19 +72,19 @@ function createRandomWithinRange(min, max) {
 // Set Range
 function checkRange() {
   if (maxInput.value == '') {
-    rangeErrorMessage.style.visibility = "hidden";
+    rangeErrorMessage.style.visibility = 'hidden';
     maxInput.classList.remove('error-highlight');
     updateButton.disabled = true;
   } else if (parseInt(minInput.value) < parseInt(maxInput.value)) {
-    rangeErrorMessage.style.visibility = "hidden";
+    rangeErrorMessage.style.visibility = 'hidden';
     maxInput.classList.remove('error-highlight');
     updateButton.disabled = false;
   } else if (parseInt(minInput.value) >= parseInt(maxInput.value)) {
-    rangeErrorMessage.style.visibility = "visible";
+    rangeErrorMessage.style.visibility = 'visible';
     maxInput.classList.add('error-highlight');
     updateButton.disabled = true;
   } else if (minInput.value == '') {
-    rangeErrorMessage.style.visibility = "hidden";
+    rangeErrorMessage.style.visibility = 'hidden';
     maxInput.classList.remove('error-highlight');
     updateButton.disabled = true;
   }
@@ -96,41 +96,41 @@ function updateRange() {
   currentMin = parseInt(minInput.value);
   currentMax = parseInt(maxInput.value);
   correctNumber = createRandomWithinRange(currentMin, currentMax);
-  minInput.value = ""; // clear value in min range box after valid update
-  maxInput.value = ""; // clear value in max range box after valid update
+  minInput.value = '';
+  maxInput.value = '';
   updateButton.disabled = true;
 }
 
 // Guess Form
 function checkWithinRangeOne() {
   if (parseInt(guessOneInput.value) < currentMin) {
-    guessOneErrorMessage.style.visibility = "visible";
+    guessOneErrorMessage.style.visibility = 'visible';
     submitButton.disabled = true;
   } else if (parseInt(guessOneInput.value) > currentMax) {
-    guessOneErrorMessage.style.visibility = "visible";
+    guessOneErrorMessage.style.visibility = 'visible';
     submitButton.disabled = true;
   } else {
-    guessOneErrorMessage.style.visibility = "hidden";
+    guessOneErrorMessage.style.visibility = 'hidden';
   }
 }
 
 function checkWithinRangeTwo() {
   if (parseInt(guessTwoInput.value) < currentMin) {
-    guessTwoErrorMessage.style.visibility = "visible";
+    guessTwoErrorMessage.style.visibility = 'visible';
     submitButton.disabled = true;
   } else if (parseInt(guessTwoInput.value) > currentMax) {
-    guessTwoErrorMessage.style.visibility = "visible";
+    guessTwoErrorMessage.style.visibility = 'visible';
     submitButton.disabled = true;
   } else {
-    guessTwoErrorMessage.style.visibility = "hidden";
+    guessTwoErrorMessage.style.visibility = 'hidden';
   }
 }
 
 function enableClearButton() {
-  var hasOneName = nameOneInput.value !== "";
-  var hasTwoName = nameTwoInput.value !== "";
-  var hasOneGuess = guessOneInput.value !== "";
-  var hasTwoGuess = guessTwoInput.value !== "";
+  var hasOneName = nameOneInput.value !== '';
+  var hasTwoName = nameTwoInput.value !== '';
+  var hasOneGuess = guessOneInput.value !== '';
+  var hasTwoGuess = guessTwoInput.value !== '';
   var isFilled = hasOneName || hasTwoName || hasOneGuess || hasTwoGuess;
   if (isFilled) {
     clearButton.disabled = false;
@@ -140,10 +140,10 @@ function enableClearButton() {
 }
 
 function enableSubmitButton() {
-  var hasOneName = nameOneInput.value !== "";
-  var hasTwoName = nameTwoInput.value !== "";
-  var hasOneGuess = guessOneInput.value !== "";
-  var hasTwoGuess = guessTwoInput.value !== "";
+  var hasOneName = nameOneInput.value !== '';
+  var hasTwoName = nameTwoInput.value !== '';
+  var hasOneGuess = guessOneInput.value !== '';
+  var hasTwoGuess = guessTwoInput.value !== '';
   var isFilled = hasOneName && hasTwoName && hasOneGuess && hasTwoGuess;
   if (isFilled) {
     submitButton.disabled = false;
@@ -153,12 +153,12 @@ function enableSubmitButton() {
 }
 
 function enableResetButton() {
-  var hasMin = minInput.value !== "";
-  var hasMax = maxInput.value !== "";
-  var hasOneName = nameOneInput.value !== "";
-  var hasTwoName = nameTwoInput.value !== "";
-  var hasOneGuess = guessOneInput.value !== "";
-  var hasTwoGuess = guessTwoInput.value !== "";
+  var hasMin = minInput.value !== '';
+  var hasMax = maxInput.value !== '';
+  var hasOneName = nameOneInput.value !== '';
+  var hasTwoName = nameTwoInput.value !== '';
+  var hasOneGuess = guessOneInput.value !== '';
+  var hasTwoGuess = guessTwoInput.value !== '';
   var isFilled = hasMin || hasMax || hasOneName || hasTwoName || hasOneGuess || hasTwoGuess;
   if (isFilled) {
     resetButton.disabled = false;
@@ -168,10 +168,10 @@ function enableResetButton() {
 }
 
 function clearInputs() {
-  nameOneInput.value = "";
-  nameTwoInput.value = "";
-  guessOneInput.value = "";
-  guessTwoInput.value = "";
+  nameOneInput.value = '';
+  nameTwoInput.value = '';
+  guessOneInput.value = '';
+  guessTwoInput.value = '';
   submitButton.disabled = true;
   clearButton.disabled = true;
 }
@@ -181,12 +181,12 @@ function updateLatestGuesses() {
   latestGuessChallengerTwo.innerText = nameTwoInput.value;
   latestGuessOne.innerText = guessOneInput.value;
   latestGuessTwo.innerText = guessTwoInput.value;
-  numberOfGuesses.push("+"); // guessOneInput count
-  numberOfGuesses.push("+"); // guessTwoInput count
+  numberOfGuesses.push('+');
+  numberOfGuesses.push('+');
   compareGuess(guessOneInput, feedbackMessageOne);
   compareGuess(guessTwoInput, feedbackMessageTwo);
-  guessOneInput.value = "";
-  guessTwoInput.value = "";
+  guessOneInput.value = '';
+  guessTwoInput.value = '';
   submitButton.disabled = true;
   clearButton.disabled = true;
 }
@@ -194,40 +194,40 @@ function updateLatestGuesses() {
 function compareGuess(guessInput, feedbackMessage) {
   var currentGuess = parseInt(guessInput.value);
   if (currentGuess === correctNumber) {
-    feedbackMessage.innerText = "BOOM!";
+    feedbackMessage.innerText = 'BOOM!';
     updateWinner();
     clearGuessInputs();
     plusTenRange();
     correctNumber = createRandomWithinRange(currentMin, currentMax);
   } else if (currentGuess > correctNumber) {
-    feedbackMessage.innerText = "that's too high";
+    feedbackMessage.innerText = 'that\'s too high';
   } else if (currentGuess < correctNumber) {
-    feedbackMessage.innerText = "that's too low"
+    feedbackMessage.innerText = 'that\'s too low';
   } else {
-    feedbackMessage.innerText = "something went wrong";
+    feedbackMessage.innerText = 'something went wrong';
   }
 }
 
 function updateWinner() {
   vsNameOne.innerText = nameOneInput.value;
   vsNameTwo.innerText = nameTwoInput.value;
-  setWinner(); // this function will update winner name
+  setWinner();
   createWinnerCard();
-  numberOfGuesses.length = 0; // the array reset to default when a game is complete
+  numberOfGuesses.length = 0;
 }
 
 function clearGuessInputs() {
-  nameOneInput.value = "";
-  nameTwoInput.value = "";
-  guessOneInput.innerText = "";
-  guessTwoInput.innerText = "";
+  nameOneInput.value = '';
+  nameTwoInput.value = '';
+  guessOneInput.innerText = '';
+  guessTwoInput.innerText = '';
 }
 
 function resetGame() {
   resetRange();
   clearAllInputs();
   resetLatestGuessField();
-  numberOfGuesses.length = 0; // the array reset to default when a game is complete
+  numberOfGuesses.length = 0;
   submitButton.disabled = true;
   clearButton.disabled = true;
   updateButton.disabled = true;
@@ -238,27 +238,27 @@ function resetRange() {
   currentMin = 1;
   currentMax = 100;
   correctNumber = createRandomWithinRange(currentMin, currentMax);
-  minSpan.innerText = "1";
-  maxSpan.innerText = "100";
-  numberOfGuesses = ["+","+"]; // restore game count to default
+  minSpan.innerText = '1';
+  maxSpan.innerText = '100';
+  numberOfGuesses = ['+','+'];
 }
 
 function clearAllInputs() {
-  nameOneInput.value = "";
-  nameTwoInput.value = "";
-  guessOneInput.value = "";
-  guessTwoInput.value = "";
-  minInput.value = "";
-  maxInput.value = "";
+  nameOneInput.value = '';
+  nameTwoInput.value = '';
+  guessOneInput.value = '';
+  guessTwoInput.value = '';
+  minInput.value = '';
+  maxInput.value = '';
 }
 
 function resetLatestGuessField() {
-  latestGuessChallengerOne.innerText = "challenger 1 name";
-  latestGuessOne.innerText = "?";
-  feedbackMessageOne.innerText = "no guesses yet";
-  latestGuessChallengerTwo.innerText = "challenger 2 name";
-  latestGuessTwo.innerText = "?";
-  feedbackMessageTwo.innerText = "no guesses yet";
+  latestGuessChallengerOne.innerText = 'challenger 1 name';
+  latestGuessOne.innerText = '?';
+  feedbackMessageOne.innerText = 'no guesses yet';
+  latestGuessChallengerTwo.innerText = 'challenger 2 name';
+  latestGuessTwo.innerText = '?';
+  feedbackMessageTwo.innerText = 'no guesses yet';
  }
 
 // Winner Card
