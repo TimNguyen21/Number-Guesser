@@ -27,7 +27,7 @@
                 </div>
                 <button type="button" class="update-button" id="update-button">update</button>
               </div>
-              <p class="error" id="error-message"><img src="assets/error-icon.svg" alt="error icon" /> Must be larger than min</p>
+              <p class="error" id="range-error-message"><img src="assets/error-icon.svg" alt="error icon" /> Must be larger than min</p>
             </div>
           </div>
         </article>
@@ -38,12 +38,12 @@
             <div class="row">
               <div class="column">
                 <label>Name</label>
-                <input type="text" id="one-name" />
+                <input type="text" id="name-one-input" />
               </div>
               <div class="column">
                 <label>Guess</label>
-                <input type="number" id="one-guess" />
-                <p class="error" id="range-error-one"><img src="assets/error-icon.svg" alt="error icon" /> Must be within range</p>
+                <input type="number" id="guess-one-input" />
+                <p class="error" id="guess-one-error-message"><img src="assets/error-icon.svg" alt="error icon" /> Must be within range</p>
               </div>
             </div>
           </div>
@@ -52,12 +52,12 @@
             <div class="row">
               <div class="column">
                 <label>Name</label>
-                <input type="text" id="two-name" />
+                <input type="text" id="name-two-input" />
               </div>
               <div class="column">
                 <label>Guess</label>
-                <input type="number" id="two-guess" />
-                <p class="error" id="range-error-two"><img src="assets/error-icon.svg" alt="error icon" /> Must be within range</p>
+                <input type="number" id="guess-two-input" />
+                <p class="error" id="guess-two-error-message"><img src="assets/error-icon.svg" alt="error icon" /> Must be within range</p>
               </div>
             </div>
           </div>
@@ -70,34 +70,34 @@
         <article class="latest-guess">
           <div class="column">
             <h2>Latest Guess</h2>
-            <h3 id="one-challenger">Challenger 1 name</h3>
+            <h3 id="latest-guess-challenger-one">Challenger 1 name</h3>
             <p>current guess</p>
-            <p class="current-guess-output" id="one-latest-guess"></p>
-            <p id="one-guess-feedback">no guesses yet</p>
+            <p class="current-guess-output" id="latest-guess-one"></p>
+            <p id="feedback-message-one">no guesses yet</p>
           </div>
           <div class="column">
-            <h3 id="two-challenger">Challenger 2 name</h2>
+            <h3 id="latest-guess-challenger-two">Challenger 2 name</h2>
             <p>current guess</p>
-            <p class="current-guess-output" id="two-latest-guess"></p>
-            <p id="two-guess-feedback">no guesses yet</p>
+            <p class="current-guess-output" id="latest-guess-two"></p>
+            <p id="feedback-message-two">no guesses yet</p>
           </div>
         </article>
       </section>
       <section id="card-section">
         <article id="winner-card">
           <div class="row match-up">
-            <p id="outcome-name-one">challenger 1</p>
+            <p id="vs-name-one">challenger 1</p>
             <p>vs</p>
-            <p id="outcome-name-two">challenger 2</p>
+            <p id="vs-name-two">challenger 2</p>
           </div>
           <div class="column winner-statement">
             <p id="winner-name">Winner Name</p>
             <p>winner</p>
           </div>
           <div class="row statistics">
-            <p><span id="summary-guesses">47</span> guesses</p>
+            <p><span id="guesses-span">47</span> guesses</p>
             <p><span id="minutes-span">1</span> minutes <span id="seconds-span">35</span> seconds</p>
-            <button id="close-winner-output">X</button>
+            <button id="close-button">X</button>
           </div>
         </article>
       </section>
