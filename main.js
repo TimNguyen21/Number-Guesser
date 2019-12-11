@@ -30,9 +30,11 @@ var feedbackMessageOne =document.querySelector('#feedback-message-one');
 var feedbackMessageTwo =document.querySelector('#feedback-message-two');
 // Winner Card
 var winnerCard = document.querySelector('#winner-card');
-var vsNameOne = document.querySelector('#vs-name-one');
-var vsNameTwo = document.querySelector('#vs-name-two');
-var winnerName = document.querySelector('#winner-name');
+// var vsNameOne = document.querySelector('#vs-name-one');
+// var vsNameTwo = document.querySelector('#vs-name-two');
+var vsNameOne = "";
+var vsNameTwo = "";
+// var winnerName = document.querySelector('#winner-name');
 var guessesSpan = document.querySelector('#guesses-span');
 var closeButton = document.querySelector('#close-button');
 
@@ -53,7 +55,7 @@ clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuesses);
 resetButton.addEventListener('click', resetGame);
 // Winner Card
-closeButton.addEventListener('click', closeWinnerCard);
+// closeButton.addEventListener('click', closeWinnerCard);
 
 // Statements
 submitButton.disabled = true;
@@ -207,9 +209,10 @@ function compareGuess(guessInput, feedbackMessage) {
 function updateWinner() {
   vsNameOne.innerText = nameOneInput.value;
   vsNameTwo.innerText = nameTwoInput.value;
-  guessesSpan.innerText = numberOfGuesses.length; // this enter number of guesses into Winner Summary
+  // guessesSpan.innerText = numberOfGuesses.length; // this enter number of guesses into Winner Summary
   numberOfGuesses.length = 0; // the array reset to default when a game is complete
   setWinner(); // this function will update winner name
+  createWinnerCard();
 }
 
 function clearGuessInputs() {
@@ -235,7 +238,7 @@ function resetRange() {
   correctNumber = createRandomWithinRange(currentMin, currentMax);
   minSpan.innerText = "1";
   maxSpan.innerText = "100";
-  gameCount = ["+","+"]; // restore game count to default
+  numberOfGuesses = ["+","+"]; // restore game count to default
 }
 
 function clearAllInputs() {
@@ -256,23 +259,61 @@ function resetLatestGuessField() {
   feedbackMessageTwo.innerText = "no guesses yet";
  }
 // Winner Card
+var winnerName = '';
+
 function setWinner() {
   if (parseInt(guessOneInput.value) === correctNumber) {
-    winnerName.innerText = nameOneInput.value;
+    winnerName = nameOneInput.value;
   } else if (parseInt(guessTwoInput.value) === correctNumber) {
-    winnerName.innerText = nameTwoInput.value;
+    winnerName = nameTwoInput.value;
   }
 }
 
-function closeWinnerCard() {
-  winnerCard.remove();
-}
+// function closeWinnerCard() {
+//   winnerCard.remove();
+// }
 
 // new code below // add 10 to max and min when game is over
 function plusTenRange() {
   currentMin = currentMin - 10;
   currentMax = currentMax + 10;
-  correctNumber = getRandomRange(currentMin, currentMax);
+  correctNumber = createRandomWithinRange(currentMin, currentMax);
   minSpan.innerText = currentMin;
   maxSpan.innerText = currentMax;
+}
+
+function createWinnerCard() {
+  const div = document.createElement('div');
+  div.className = 'winner-card';
+  div.innerHTML = `
+  <article id="winner-card">
+    <div class="row match-up">
+      <p id="vs-name-one">${nameOneInput.value}</p>
+      <p>vs</p>
+      <p id="vs-name-two">${nameTwoInput.value}</p>
+    </div>
+    <div class="column winner-statement">
+      <p id="winner-name">${winnerName}</p>
+      <p>winner</p>
+    </div>
+    <div class="row statistics">
+      <p><span id="guesses-span">${numberOfGuesses}.length</span> guesses</p>
+      <p><span id="minutes-span">1</span> minutes <span id="seconds-span">35</span> seconds</p>
+      <button id="close-button">X</button>
+    </div>
+  </article>
+  `;
+  document.querySelector('#card-section').appendChild(div);
+}
+
+var cardSection = document.querySelector('#card-section');
+
+cardSection.addEventListener('click', removeWinnerCard);
+
+function removeWinnerCard() {
+  if (event.target.classList.contains('#close-button')) {
+    // var parent = event.target.closest('.winner-card');
+    // parent.remove();
+    // cardSection.removeChild(event.target);
+  }
 }
