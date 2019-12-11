@@ -2,7 +2,7 @@
 var currentMin = 1;
 var currentMax = 100;
 var correctNumber = createRandomWithinRange(currentMin, currentMax);
-var numberOfGuesses = ["+", "+"];
+var numberOfGuesses = [];
 // Query Selectors
 // Set Range
 var minInput = document.querySelector('#min-range');
@@ -29,12 +29,12 @@ var latestGuessTwo = document.querySelector('#latest-guess-two');
 var feedbackMessageOne =document.querySelector('#feedback-message-one');
 var feedbackMessageTwo =document.querySelector('#feedback-message-two');
 // Winner Card
-var winnerCard = document.querySelector('#winner-card');
-// var vsNameOne = document.querySelector('#vs-name-one');
-// var vsNameTwo = document.querySelector('#vs-name-two');
+var cardSection = document.querySelector('#card-section');
+var winnerCard = document.querySelector('.winner-card');
+var cardHTML = winnerCard.innerHTML;
+var winnerName = '';
 var vsNameOne = "";
 var vsNameTwo = "";
-// var winnerName = document.querySelector('#winner-name');
 var guessesSpan = document.querySelector('#guesses-span');
 var closeButton = document.querySelector('#close-button');
 
@@ -55,9 +55,10 @@ clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuesses);
 resetButton.addEventListener('click', resetGame);
 // Winner Card
-// closeButton.addEventListener('click', closeWinnerCard);
+cardSection.addEventListener('click', removeWinnerCard);
 
 // Statements
+winnerCard.remove();
 submitButton.disabled = true;
 clearButton.disabled = true;
 resetButton.disabled = true;
@@ -67,6 +68,7 @@ updateButton.disabled = true;
 function createRandomWithinRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 // Set Range
 function checkRange() {
   if (maxInput.value == '') {
@@ -98,6 +100,7 @@ function updateRange() {
   maxInput.value = ""; // clear value in max range box after valid update
   updateButton.disabled = true;
 }
+
 // Guess Form
 function checkWithinRangeOne() {
   if (parseInt(guessOneInput.value) < currentMin) {
@@ -178,15 +181,14 @@ function updateLatestGuesses() {
   latestGuessChallengerTwo.innerText = nameTwoInput.value;
   latestGuessOne.innerText = guessOneInput.value;
   latestGuessTwo.innerText = guessTwoInput.value;
+  numberOfGuesses.push("+"); // guessOneInput count
+  numberOfGuesses.push("+"); // guessTwoInput count
   compareGuess(guessOneInput, feedbackMessageOne);
   compareGuess(guessTwoInput, feedbackMessageTwo);
   guessOneInput.value = "";
-  numberOfGuesses.push("+"); // guessOneInput count
   guessTwoInput.value = "";
-  numberOfGuesses.push("+"); // guessTwoInput count
   submitButton.disabled = true;
   clearButton.disabled = true;
-  // resetButton.disabled = true; //reset button remain active becuase it is used to reset game at any time
 }
 
 function compareGuess(guessInput, feedbackMessage) {
@@ -209,10 +211,9 @@ function compareGuess(guessInput, feedbackMessage) {
 function updateWinner() {
   vsNameOne.innerText = nameOneInput.value;
   vsNameTwo.innerText = nameTwoInput.value;
-  // guessesSpan.innerText = numberOfGuesses.length; // this enter number of guesses into Winner Summary
-  numberOfGuesses.length = 0; // the array reset to default when a game is complete
   setWinner(); // this function will update winner name
   createWinnerCard();
+  numberOfGuesses.length = 0; // the array reset to default when a game is complete
 }
 
 function clearGuessInputs() {
@@ -226,6 +227,7 @@ function resetGame() {
   resetRange();
   clearAllInputs();
   resetLatestGuessField();
+  numberOfGuesses.length = 0; // the array reset to default when a game is complete
   submitButton.disabled = true;
   clearButton.disabled = true;
   updateButton.disabled = true;
@@ -258,9 +260,8 @@ function resetLatestGuessField() {
   latestGuessTwo.innerText = "?";
   feedbackMessageTwo.innerText = "no guesses yet";
  }
-// Winner Card
-var winnerName = '';
 
+// Winner Card
 function setWinner() {
   if (parseInt(guessOneInput.value) === correctNumber) {
     winnerName = nameOneInput.value;
@@ -269,11 +270,6 @@ function setWinner() {
   }
 }
 
-// function closeWinnerCard() {
-//   winnerCard.remove();
-// }
-
-// new code below // add 10 to max and min when game is over
 function plusTenRange() {
   currentMin = currentMin - 10;
   currentMax = currentMax + 10;
@@ -283,37 +279,18 @@ function plusTenRange() {
 }
 
 function createWinnerCard() {
-  const div = document.createElement('div');
-  div.className = 'winner-card';
-  div.innerHTML = `
-  <article id="winner-card">
-    <div class="row match-up">
-      <p id="vs-name-one">${nameOneInput.value}</p>
-      <p>vs</p>
-      <p id="vs-name-two">${nameTwoInput.value}</p>
-    </div>
-    <div class="column winner-statement">
-      <p id="winner-name">${winnerName}</p>
-      <p>winner</p>
-    </div>
-    <div class="row statistics">
-      <p><span id="guesses-span">${numberOfGuesses}.length</span> guesses</p>
-      <p><span id="minutes-span">1</span> minutes <span id="seconds-span">35</span> seconds</p>
-      <button id="close-button">X</button>
-    </div>
-  </article>
-  `;
-  document.querySelector('#card-section').appendChild(div);
+  var newArticle = document.createElement('article');
+  newArticle.className = 'winner-card';
+  newArticle.innerHTML = cardHTML;
+  newArticle.querySelector('#vs-name-one').innerText = nameOneInput.value;
+  newArticle.querySelector('#vs-name-two').innerText = nameTwoInput.value;
+  newArticle.querySelector('#winner-name').innerText = winnerName;
+  newArticle.querySelector('#guesses-span').innerText = numberOfGuesses.length;
+  cardSection.insertBefore(newArticle, cardSection.childNodes[0]);
 }
 
-var cardSection = document.querySelector('#card-section');
-
-cardSection.addEventListener('click', removeWinnerCard);
-
 function removeWinnerCard() {
-  if (event.target.classList.contains('#close-button')) {
-    // var parent = event.target.closest('.winner-card');
-    // parent.remove();
-    // cardSection.removeChild(event.target);
+  if (event.target.classList.contains('close-button')) {
+    event.target.parentNode.parentNode.remove();
   }
 }
