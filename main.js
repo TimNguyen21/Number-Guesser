@@ -193,6 +193,7 @@ function compareGuess(guessInput, feedbackMessage) {
     feedbackMessage.innerText = "BOOM!";
     updateWinner();
     clearGuessInputs();
+    plusTenRange();
     correctNumber = createRandomWithinRange(currentMin, currentMax);
   } else if (currentGuess > correctNumber) {
     feedbackMessage.innerText = "that's too high";
@@ -234,6 +235,7 @@ function resetRange() {
   correctNumber = createRandomWithinRange(currentMin, currentMax);
   minSpan.innerText = "1";
   maxSpan.innerText = "100";
+  gameCount = ["+","+"]; // restore game count to default
 }
 
 function clearAllInputs() {
@@ -264,4 +266,13 @@ function setWinner() {
 
 function closeWinnerCard() {
   winnerCard.remove();
+}
+
+// new code below // add 10 to max and min when game is over
+function plusTenRange() {
+  currentMin = currentMin - 10;
+  currentMax = currentMax + 10;
+  correctNumber = getRandomRange(currentMin, currentMax);
+  minSpan.innerText = currentMin;
+  maxSpan.innerText = currentMax;
 }
