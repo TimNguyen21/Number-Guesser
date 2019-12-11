@@ -228,11 +228,10 @@ article.winner-card div.row:first-child p:nth-child(2) {
   border: 2px solid gray;
 }
 
-#outcome-name-one,
-#outcome-name-two,
+#vs-name-one,
+#vs-name-two,
 #winner-name,
-#summary-guesses,
-#close-winner-output,
+#guesses-span,
 #minutes-span,
 #seconds-span {
   font-weight: bold;
@@ -242,8 +241,8 @@ div.match-up p {
   font-size: 16px;
 }
 
-#outcome-name-one,
-#outcome-name-two {
+#vs-name-one,
+#vs-name-two {
   font-size: 24px;
 }
 
@@ -266,7 +265,7 @@ div.statistics p {
   font-size: 24px;
 }
 
-button#close-winner-output {
+button#close-button {
   width: 35px;
   height: 35px;
   font-weight: normal;

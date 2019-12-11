@@ -7,34 +7,34 @@ var numberOfGuesses = ["+", "+"];
 // Set Range
 var minInput = document.querySelector('#min-range');
 var maxInput = document.querySelector('#max-range');
-var rangeErrorMessage = document.querySelector('#error-message');
+var rangeErrorMessage = document.querySelector('#range-error-message');
 var updateButton = document.querySelector('#update-button');
 // Guess Form
 var minSpan = document.querySelector('#min-span');
 var maxSpan = document.querySelector('#max-span');
-var nameOneInput = document.querySelector('#one-name');
-var nameTwoInput = document.querySelector('#two-name');
-var guessOneInput = document.querySelector('#one-guess');
-var guessTwoInput = document.querySelector('#two-guess');
-var guessOneErrorMessage = document.querySelector('#range-error-one');
-var guessTwoErrorMessage = document.querySelector('#range-error-two');
+var nameOneInput = document.querySelector('#name-one-input');
+var nameTwoInput = document.querySelector('#name-two-input');
+var guessOneInput = document.querySelector('#guess-one-input');
+var guessTwoInput = document.querySelector('#guess-two-input');
+var guessOneErrorMessage = document.querySelector('#guess-one-error-message');
+var guessTwoErrorMessage = document.querySelector('#guess-two-error-message');
 var submitButton = document.querySelector('#submit-button');
 var clearButton = document.querySelector('#clear-button');
 var resetButton = document.querySelector('#reset-button');
 // Latest Guess
-var latestGuessChallengerOne = document.querySelector('#one-challenger');
-var latestGuessChallengerTwo = document.querySelector('#two-challenger');
-var latestGuessOne = document.querySelector('#one-latest-guess');
-var latestGuessTwo = document.querySelector('#two-latest-guess');
-var feedbackMessageOne =document.querySelector('#one-guess-feedback');
-var feedbackMessageTwo =document.querySelector('#two-guess-feedback');
+var latestGuessChallengerOne = document.querySelector('#latest-guess-challenger-one');
+var latestGuessChallengerTwo = document.querySelector('#latest-guess-challenger-two');
+var latestGuessOne = document.querySelector('#latest-guess-one');
+var latestGuessTwo = document.querySelector('#latest-guess-two');
+var feedbackMessageOne =document.querySelector('#feedback-message-one');
+var feedbackMessageTwo =document.querySelector('#feedback-message-two');
 // Winner Card
 var winnerCard = document.querySelector('#winner-card');
-var vsNameOne = document.querySelector('#outcome-name-one');
-var vsNameTwo = document.querySelector('#outcome-name-two');
+var vsNameOne = document.querySelector('#vs-name-one');
+var vsNameTwo = document.querySelector('#vs-name-two');
 var winnerName = document.querySelector('#winner-name');
-var guessesSpan = document.querySelector('#summary-guesses');
-var closeButton = document.querySelector('#close-winner-output');
+var guessesSpan = document.querySelector('#guesses-span');
+var closeButton = document.querySelector('#close-button');
 
 // Event Listeners
 // Set Range
