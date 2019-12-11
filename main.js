@@ -29,13 +29,12 @@ var latestGuessTwo = document.querySelector('#latest-guess-two');
 var feedbackMessageOne =document.querySelector('#feedback-message-one');
 var feedbackMessageTwo =document.querySelector('#feedback-message-two');
 // Winner Card
+var cardSection = document.querySelector('#card-section');
 var winnerCard = document.querySelector('.winner-card');
 var cardHTML = winnerCard.innerHTML;
-// var vsNameOne = document.querySelector('#vs-name-one');
-// var vsNameTwo = document.querySelector('#vs-name-two');
+var winnerName = '';
 var vsNameOne = "";
 var vsNameTwo = "";
-// var winnerName = document.querySelector('#winner-name');
 var guessesSpan = document.querySelector('#guesses-span');
 var closeButton = document.querySelector('#close-button');
 
@@ -56,7 +55,7 @@ clearButton.addEventListener('click', clearInputs);
 submitButton.addEventListener('click', updateLatestGuesses);
 resetButton.addEventListener('click', resetGame);
 // Winner Card
-// closeButton.addEventListener('click', closeWinnerCard);
+cardSection.addEventListener('click', removeWinnerCard);
 
 // Statements
 winnerCard.remove();
@@ -69,6 +68,7 @@ updateButton.disabled = true;
 function createRandomWithinRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 // Set Range
 function checkRange() {
   if (maxInput.value == '') {
@@ -100,6 +100,7 @@ function updateRange() {
   maxInput.value = ""; // clear value in max range box after valid update
   updateButton.disabled = true;
 }
+
 // Guess Form
 function checkWithinRangeOne() {
   if (parseInt(guessOneInput.value) < currentMin) {
@@ -188,7 +189,6 @@ function updateLatestGuesses() {
   guessTwoInput.value = "";
   submitButton.disabled = true;
   clearButton.disabled = true;
-  // resetButton.disabled = true; //reset button remain active becuase it is used to reset game at any time
 }
 
 function compareGuess(guessInput, feedbackMessage) {
@@ -211,7 +211,6 @@ function compareGuess(guessInput, feedbackMessage) {
 function updateWinner() {
   vsNameOne.innerText = nameOneInput.value;
   vsNameTwo.innerText = nameTwoInput.value;
-  // guessesSpan.innerText = numberOfGuesses.length; // this enter number of guesses into Winner Summary
   setWinner(); // this function will update winner name
   createWinnerCard();
   numberOfGuesses.length = 0; // the array reset to default when a game is complete
@@ -261,9 +260,8 @@ function resetLatestGuessField() {
   latestGuessTwo.innerText = "?";
   feedbackMessageTwo.innerText = "no guesses yet";
  }
-// Winner Card
-var winnerName = '';
 
+// Winner Card
 function setWinner() {
   if (parseInt(guessOneInput.value) === correctNumber) {
     winnerName = nameOneInput.value;
@@ -272,11 +270,6 @@ function setWinner() {
   }
 }
 
-// function closeWinnerCard() {
-//   winnerCard.remove();
-// }
-
-// new code below // add 10 to max and min when game is over
 function plusTenRange() {
   currentMin = currentMin - 10;
   currentMax = currentMax + 10;
@@ -295,10 +288,6 @@ function createWinnerCard() {
   newArticle.querySelector('#guesses-span').innerText = numberOfGuesses.length;
   cardSection.insertBefore(newArticle, cardSection.childNodes[0]);
 }
-
-var cardSection = document.querySelector('#card-section');
-
-cardSection.addEventListener('click', removeWinnerCard);
 
 function removeWinnerCard() {
   if (event.target.classList.contains('close-button')) {
