@@ -1,4 +1,4 @@
-# number-guesser
+# Number-Guesser
 Jonathan and Tim 1911 FE partner project
 
 Project Members: Jonathan Tschida, Tim Nguyen
