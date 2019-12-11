@@ -265,7 +265,7 @@ div.statistics p {
   font-size: 24px;
 }
 
-button#close-button {
+button.close-button {
   width: 35px;
   height: 35px;
   font-weight: normal;

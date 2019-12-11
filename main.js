@@ -299,7 +299,7 @@ function createWinnerCard() {
     <div class="row statistics">
       <p><span id="guesses-span">${numberOfGuesses}.length</span> guesses</p>
       <p><span id="minutes-span">1</span> minutes <span id="seconds-span">35</span> seconds</p>
-      <button id="close-button">X</button>
+      <button class="close-button">X</button>
     </div>
   </article>
   `;
@@ -311,9 +311,7 @@ var cardSection = document.querySelector('#card-section');
 cardSection.addEventListener('click', removeWinnerCard);
 
 function removeWinnerCard() {
-  if (event.target.classList.contains('#close-button')) {
-    // var parent = event.target.closest('.winner-card');
-    // parent.remove();
-    // cardSection.removeChild(event.target);
+  if (event.target.classList.contains('close-button')) {
+    event.target.parentNode.parentNode.remove();
   }
 }
