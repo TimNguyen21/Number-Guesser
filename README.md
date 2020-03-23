@@ -16,3 +16,7 @@ Game Functions
 Below is the comp that we were asked to recreate:
  ![Comp recreation](https://frontend.turing.io/projects/module-1/assets/number-guesser/winner-cards.jpg)
  
+ ## Set-up
+ - `clone repo`
+ - `load index.html`
+ 
